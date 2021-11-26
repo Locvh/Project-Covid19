@@ -1,0 +1,211 @@
+.btn_DeleteAndView {
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  margin: 8px;
+}
+.btn_save {
+  font-size: 15px;
+  margin-left: 20px;
+  padding: 2 rem;
+  margin: 2rem 0;
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+  float: left;
+  border: none;
+}
+
+.btn_back {
+  padding: 2 rem;
+  margin: 2rem 0;
+}
+.space {
+  margin: 8px 0px 8px 10px;
+  width: 100px;
+}
+.search-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 50px 20px 200px;
+}
+
+.input-wrapper1 {
+  display:inline-block;
+  position: relative;
+  width: 800px;
+}
+
+.input-wrapper1 label{
+  float: left;
+}
+
+.input-wrapper1 .form__input{
+  width: 50%;
+  border:0px solid transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #aaa;
+  padding: 1em .5em .5em 2.5em;
+  outline:none;
+  margin:1.5em auto;
+  transition: all .5s ease;
+  font-size: 16px;
+  background: white ;
+}
+.input-wrapper1 .btn-edit{
+  font-size: 13px;
+  margin-left : 10px;
+  /* margin-top: 50px; */
+  height: 35px;
+  bottom:50px;
+  width: 100px;
+}
+
+.input-wrapper1 i {
+  color: #aaa;
+  position: absolute;
+  top: 4.3rem;
+  left: 2rem;
+  font-size: 15px;
+}
+
+.input-wrapper1 .form__input:focus{
+  border-bottom-color: #67daff;
+  border-radius: 4px;
+  background: white ;
+}
+.input-wrapper1 .form__input:focus + i {
+  color: #67daff;
+}
+
+
+/* ------------------------------------ */
+
+.spinner {
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background-color: #EEE;
+  border: 5px solid transparent;
+  border-top: 5px solid rgb(66, 173, 187);
+  border-right: 5px solid rgb(66, 173, 187);
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  transition: .2s;
+  -webkit-animation: loading 1s linear infinite;
+  -moz-animation: loading 1s linear infinite;
+  animation: loading 1s linear infinite;
+}
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------------- */
+@import "variables";
+
+.loading-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+.site-container {
+  font-size: 14px;
+  height: 100vh;
+  background: #f1f1f1;
+  overflow: hidden;
+}
+  .site-container .site-header {
+    height: 64px;
+  }
+  .site-container  .site-content {
+    height: calc(100vh - 65px);
+    padding: 0 15px;
+    overflow: auto;
+  }
+/* ----------------------------------------------------- */
+.btn-back{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.name_info{
+  margin-left: 40px;
+}
+
+.table th{
+  background-color: rgba(218, 248, 253, 0.459);
+  border-top: 1px solid #000;
+}
+
+.table tr:nth-child(even) {
+  background-color: rgba(241, 239, 239, 0.726);
+}
+
+.close1{
+font-size: 25px;
+border: 1px solid black;
+float: right;
+border-radius: 50%;
+background-color: #fff;
+height: 35px;
+width: 35px;
+}
+
+.logout{
+  text-decoration: none;
+  color: rgba(25, 0, 255, 0.836);
+  font-size: 500;
+}
+
+.logout:hover{
+  color: #000;
+}
+
+.modal-title{
+  color: #fff;
+  font-weight: 600;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+.modal-header{
+  background-color: rgb(26, 148, 255);
+}

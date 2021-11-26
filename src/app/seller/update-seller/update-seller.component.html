@@ -1,0 +1,106 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+<!-- <header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img src="assets/img/logo.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h3 class="d-flex justify-content-center heading">Chỉnh sửa thông tin cửa hàng</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header> -->
+  <section>
+    <header>
+      <nav class="rad-navigation">
+        <div class="rad-logo-container">
+          <div class="rad-logo">Thông tin chi tiết tiểu thương</div>
+        </div>
+      </nav>
+    </header>
+  </section>
+
+  <app-seller></app-seller>
+
+
+      <div class="main-content text-center">
+        <div class="col-md-12 col-xs-12 col-sm-12 login_form ">
+          <div class="container-fluid">
+            <div class="row">
+              <h2>Thông tin tiểu thương</h2>
+            </div>
+              <form [formGroup]="form" (ngSubmit)="updateData()" class="form-group">
+
+                <div class="text-center">
+                  <img [src]="imgSrc" width="450px" height="300px" (click)="fileUploader.click()" >
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label> Chọn hình ảnh</label>
+                  <input type="file" accept="image/*" name="username" id="username" class="form__input" placeholder="chọn hình" #fileUploader  (change)="showPreview($event)">
+                  <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label >Tên cửa hàng</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Tên cửa hàng" formControlName="shopName" >
+                  <i class="fa fa-home" aria-hidden="true"></i>
+                </div>
+                  <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Số điện thoại</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Số điện thoại" formControlName="phoneSeller" >
+                  <i class="fa fa-mobile" aria-hidden="true"></i>
+                </div>
+                  <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Email</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Email" formControlName="email" >
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </div>
+                  <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Địa chỉ cửa hàng</label>
+                  <input formControlName="addressShop"  (keyup)="autocomplete()" matInput type="text" [matAutocomplete]="auto" name="username" id="username" class="form__input" placeholder="Địa chỉ cửa hàng"  >
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <mat-autocomplete #auto="matAutocomplete" >
+                    <mat-option *ngFor="let item of filteredOptions" [value]="item.description">
+                      {{item.description}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </div>
+                  <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
+                </div>
+
+                <h3 class="text-danger">{{message}}</h3>
+                <button type="submit" class="button type1" >Xác nhận thông tin</button>
+              </form>
+          </div>
+        </div>
+      </div>

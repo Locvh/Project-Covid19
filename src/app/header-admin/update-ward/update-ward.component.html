@@ -1,0 +1,58 @@
+
+<header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img src="assets/img/logo.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h3 class="d-flex justify-content-center">Thông tin số ca covid-19 trên quận 1</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header>
+<section class="py-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="border-0 bg-light">
+              <div class="p-2 px-3 text-uppercase" align="center">STT</div>
+            </th>
+            <th class="border-0 bg-light">
+              <div class="p-2 px-3 text-uppercase" align="center">Tên Phường</div>
+            </th>
+            <th class="border-0 bg-light">
+              <div class="py-2 text-uppercase" align="center" >Số Lượng nhiễm Covid</div>
+            </th>
+            <th class="border-0 bg-light">
+              <div class="py-2 text-uppercase" align="center">Cập nhật</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let control of myFormArray.controls | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }; let i=index ">
+            <td align="center">{{i+1}}</td>
+            <td class="border-0 align-middle" align="center">{{infecteds[i].nameWard}}</td>
+            <td class="border-0 align-middle" align="center">
+              <input type="number"  [formControl]="control" style="width: 100px;"/>
+            </td>
+            <td align="center">
+              <button type="button" class="btn btn-primary" (click) ="UpdateAmount(infecteds[i].Id, i)">Cập nhật</button>
+            </td>
+          </tr>
+        </tbody>
+        <br><a class="btn btn-outline-success rounded-pill py-2 d-md-block button-edit btn_back"  [routerLink]="['/header-admin']" > Quay về trang chủ</a >
+      </table>
+  </section>
+  <div>
+      <pagination-controls class="text-center" (pageChange)="pageNumber = $event" (click)="onload()"></pagination-controls>
+  </div>
+

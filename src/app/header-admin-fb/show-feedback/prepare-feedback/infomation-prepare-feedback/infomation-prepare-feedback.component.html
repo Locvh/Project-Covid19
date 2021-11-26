@@ -1,0 +1,76 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner" color="primary">
+  </mat-progress-spinner>
+</div>
+
+
+
+<div class="sidenav">
+  <div class="text">
+    <p>Tên khách hàng: {{Info.customer.customerName}}</p>
+    <p>Số điện thoại khách hàng: {{Info.customer.customerPhone}}</p>
+    <p>Tên Cửa Hàng: {{Info.sellerName}}</p>
+    <p>Lý do: {{Info.description}}</p>
+    <div *ngIf="Info.status === 'New'">
+      <p>Tình Trạng Đơn: Mới</p>
+    </div>
+  </div>
+
+  <div class="images">
+    <h3 class="textImage">Ảnh Phản Hồi Từ Khách Hàng</h3>
+    <div class="imageBL">
+      <img src="{{Info.imageFeedback}}" alt="" width="350" height="250">
+    </div>
+  </div>
+
+  <div id="image-viewer">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="full-image">
+  </div>
+  <br>
+  <div class="text-danger message">{{message}}</div>
+  <div *ngIf="Info.status === 'New'">
+    <!-- Lê Đức -->
+    <hr>
+    <h4 align="center" class="feedbackAdmin">Phản hồi của quận đoàn</h4>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-group">
+      <div class="row">
+        <div class="input-wrapper1">
+        <textarea type="text" name="username" id="username"  rows="4" cols="50" class="form__input" placeholder="Mô tả phản hồi......"  formControlName="descriptionAdmin"></textarea>
+      </div>
+      </div>
+    </form>
+    <!-- -------------- -->
+
+    <div class="edit">
+      <a (click)="processFeedback(Info.feedbackId)">
+        <svg width="66" height="66" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"
+          id="icon-tick-yes">
+          <g stroke="#444" stroke-width="4">
+            <circle class="icon-bg" cx="49" cy="48" r="31" stroke-width="2" fill="#fff" />
+            <path class="line-bg2" d="M33 48L45.3701 60.3701L68.1838 37.5563" stroke="#ccc" />
+            <path class="icon-line line-in" d="M33 48L45.3701 60.3701L68.1838 37.5563" stroke="currentcolor" />
+          </g>
+        </svg>
+      </a>
+
+      <a (click)="rejectFeedback(Info.feedbackId,Info.orderId)">
+        <svg width="66" height="66" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"
+          id="icon-cross-no">
+          <g stroke="#444" stroke-width="4">
+            <circle cx="49" cy="48" r="31" stroke="#444" fill="#fff" stroke-width="2" />
+            <g class="line-bg1">
+              <path d="M35.1811 33.9311L63.8189 62.5689" />
+              <path d="M63.8189 33.9311L35.1811 62.5689" />
+            </g>
+            <g stroke="currentcolor">
+              <path class="icon-line line-in line-1" d="M35.1811 33.9311L63.8189 62.5689" />
+              <path class="icon-line line-in line-2" d="M63.8189 33.9311L35.1811 62.5689" />
+            </g>
+          </g>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</div>

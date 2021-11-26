@@ -1,0 +1,86 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+              <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-group">
+
+                <div class="text-center">
+                  <img [src]="imgSrc" width="450px" height="300px" (click)="fileUploader.click()" >
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label> Chọn hình ảnh</label>
+                  <input type="file" accept="image/*" name="username" id="username" class="form__input" placeholder="chọn hình" #fileUploader  formControlName="imageProduct"  (change)="showPreview($event)">
+                  <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label >Tên sản phẩm</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Tên sản phẩm"  formControlName="productName">
+                  <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                </div>
+                  <div class="text-danger" *ngIf="isSubmitted && formControls.productName.errors?.required">Chưa điền tên sản phẩm</div><br />
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Giá tiền</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Giá tiền" formControlName="unitPrice" >
+                  <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+                  <div class="text-danger" *ngIf="isSubmitted && formControls.unitPrice.errors?.required">Chưa điền giá tiền</div><br />
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Đơn vị tính</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Đơn vị tính" formControlName="unitProduct" >
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </div>
+                  <div class="text-danger" *ngIf="isSubmitted && formControls.unitProduct.errors?.required">Chưa điền đơn vị tính</div><br />
+                </div>
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Mô tả chi tiết sản phẩm</label>
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Mô tả chi tiết sản phẩm" formControlName="descriptionProduct" >
+                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <label>Danh mục sản phẩm</label>
+                    <select formControlName="categoryProduct" class="form__input"  >
+                      <option value="" disabled >Chọn danh mục sản phẩm:</option>
+                      <option value="10CA01" >Thịt, cá, hải sản</option>
+                      <option value="1CA101">Vật dụng gia đình</option>
+                      <option value="2CA202">Gia vị</option>
+                      <option value="3CA303">Đồ uống</option>
+                      <option value="4CA404">Vệ sinh nhà cửa</option>
+                      <option value="5CA505">Chăm sóc cá nhân</option>
+                      <option value="6CA606">Bánh kẹo</option>
+                      <option value="7CA707">Sữa</option>
+                      <option value="8CA808">Gạo, bột, đồ khô</option>
+                      <option value="9CA909">Rau, củ, trái cây</option>
+                    </select>
+                  <i class="fa fa-th-large" aria-hidden="true"></i>
+                </div>
+                <div class="text-danger" *ngIf="isSubmitted && formControls.categoryProduct.errors?.required">Chưa điền danh mục</div>
+                </div>
+
+                <h3 class="text-danger title">{{message}}</h3>
+                <div class="btn-edit">
+                <button type="submit" class="button type1" >Thêm sản phẩm</button>
+              </div>
+              </form>
+          <!-- </div>
+        </div>
+      </div> -->

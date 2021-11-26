@@ -1,0 +1,43 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+        <div class="form">
+        <form
+          class="needs-validation"
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="row">
+            <div class="input-wrapper1">
+            <!-- <label>Danh sách khuyến mãi</label> -->
+              <select class="form__input" formControlName="productId" >
+                <option value="" disabled >Chọn sản phẩm muốn khuyến mãi:</option>
+                <option *ngFor="let control of promotions" [ngValue]="control.productId" >{{control.productName}}</option>
+              </select>
+            <i class="fa fa-th-large" aria-hidden="true"></i>
+          </div>
+          </div>
+          <h3 class="text-danger message">{{message}}</h3>
+          <div class="btn-edit">
+          <button  class="button type1" type="submit">
+            Thêm khuyến mãi
+          </button>
+          </div>
+        </form>
+
+      <div id="container">
+      <ul>
+        <li *ngFor="let hero of productOfPromotion | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+          <span (click)="deleteProductOfPromotion(hero.productId)"><i class="fa fa-trash"></i></span> {{hero.productName}}
+        </li>
+
+      </ul>
+    </div>
+
+      <div class="page">
+        <pagination-controls (pageChange)="pageNumber = $event" (click)="getProductOfPromotion()"  align="center"></pagination-controls>
+        </div>
+      </div>
+

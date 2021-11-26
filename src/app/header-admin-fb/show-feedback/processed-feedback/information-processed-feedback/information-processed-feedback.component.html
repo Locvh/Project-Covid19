@@ -1,0 +1,53 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+  </div>
+
+<div class="sidenav">
+  <div class="text">
+        <p>Tên khách hàng: {{Info.customer.customerName}}</p>
+        <p>Số điện thoại khách hàng: {{Info.customer.customerPhone}}</p>
+        <p>Tên Cửa Hàng: {{Info.sellerName}}</p>
+        <p>Lý do: {{Info.description}}</p>
+        <div *ngIf="Info.status === 'Processing'">
+        <p>Tình Trạng Đơn: Đang xử lí</p>
+  </div>
+  </div>
+
+  <div class="images">
+    <!-- <h3 class="textImage">Ảnh Phản Hồi Từ Khách Hàng</h3> -->
+      <div class="imageBL">
+    <img src="{{Info.imageFeedback}}" alt="" width="350" height="250">
+      </div>
+  </div>
+
+  <div id="image-viewer">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="full-image">
+  </div>
+
+<br>
+<div class="text-danger message">{{message}}</div>
+<br>
+
+<hr>
+<h4 align="center" class="feedbackAdmin">Phản hồi của quận đoàn</h4>
+<p align="center">{{Info.descriptionAdmin}}</p>
+
+<div *ngIf="Info.status === 'Processing'" >
+  <div class="edit">
+    <a  (click)="finishFeedback(Info.feedbackId,Info.orderId)">
+   <svg width="66" height="66" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" id="icon-tick-yes">
+     <g stroke="#444" stroke-width="4">
+       <circle class="icon-bg" cx="49" cy="48" r="31" stroke-width="2" fill="#fff" />
+       <path class="line-bg2" d="M33 48L45.3701 60.3701L68.1838 37.5563" stroke="#ccc" />
+       <path class="icon-line line-in" d="M33 48L45.3701 60.3701L68.1838 37.5563" stroke="currentcolor" />
+     </g>
+   </svg>
+ </a>
+ </div>
+ </div>
+
+</div>
+

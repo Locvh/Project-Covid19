@@ -1,0 +1,59 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+<!-- <header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img src="assets/img/logo.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h3 class="d-flex justify-content-center heading">Thông tin vận chuyển</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header> -->
+
+  <section>
+    <header>
+      <nav class="rad-navigation">
+        <div class="rad-logo-container">
+          <div class="rad-logo">Thông tin vận chuyển</div>
+        </div>
+      </nav>
+    </header>
+  </section>
+
+  <app-seller></app-seller>
+
+      <div class="main-content text-center">
+        <div class="col-md-12 col-xs-12 col-sm-12 login_form ">
+          <div class="container-fluid">
+            <div class="row">
+              <h2>Phí vận chuyển / 1km</h2>
+            </div>
+              <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-group">
+                <div class="row">
+                  <div class="input-wrapper1">
+                  <input type="text" name="username" id="username" class="form__input" placeholder="Phí vận chuyển / 1km" formControlName="distanceFee">
+                  <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                </div>
+                  <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
+                </div>
+
+                <h3 class="text-danger">{{message}}</h3>
+                <button type="submit" class="button type1" >Xác nhận thông tin</button>
+              </form>
+          </div>
+        </div>
+      </div>

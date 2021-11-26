@@ -1,0 +1,350 @@
+
+.spinner {
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background-color: #EEE;
+  border: 5px solid transparent;
+  border-top: 5px solid rgb(66, 173, 187);
+  border-right: 5px solid rgb(66, 173, 187);
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  transition: .2s;
+  -webkit-animation: loading 1s linear infinite;
+  -moz-animation: loading 1s linear infinite;
+  animation: loading 1s linear infinite;
+}
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------------- */
+@import "variables";
+
+.loading-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+.site-container {
+  font-size: 14px;
+  height: 100vh;
+  background: #f1f1f1;
+  overflow: hidden;
+}
+  .site-container .site-header {
+    height: 64px;
+  }
+  .site-container  .site-content {
+    height: calc(100vh - 65px);
+    padding: 0 15px;
+    overflow: auto;
+  }
+/* ----------------------------------------------------- */
+
+.receipt {
+  padding: 3mm;
+  width: 100mm;
+  border: 1px solid black;
+  margin-left: 12%;
+  margin-top: 20px;
+  color: black;
+}
+.orderNo {
+width: 100%;
+text-align: right;
+padding-bottom: 1mm;
+font-size: 13pt;
+font-weight: bold;
+}
+
+.orderNo:empty {
+display: none;
+}
+
+.headerSubTitle {
+text-align: center;
+font-size: 12pt;
+}
+
+.headerTitle {
+text-align: center;
+font-size: 17px;
+font-weight: 600;
+margin-top: 15px;
+margin-bottom: 10px;
+}
+
+#location {
+margin-top: 5pt;
+text-align: center;
+font-size: 16pt;
+font-weight: bold;
+}
+
+#date {
+margin: 5pt 0px;
+text-align: center;
+font-size: 10pt;
+}
+
+#barcode {
+display: block;
+margin: 0px auto;
+}
+
+#barcode:empty {
+display: none;
+}
+
+.watermark {
+ position: absolute;
+ left: 7mm;
+ top: 60mm;
+ width: 75mm;
+ opacity: 0.1;
+}
+
+.keepIt {
+text-align: center;
+font-size: 12pt;
+font-weight: bold;
+}
+.keepIt1 {
+text-align: center;
+font-size: 13pt;
+font-weight: 400;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.keepItBody {
+text-align: center;
+font-size: 8pt;
+margin: 5px;
+}
+.keepItBody2 {
+text-align: left;
+font-size: 10pt;
+margin: 5px;
+}
+
+.item {
+  margin-bottom: 1mm;
+}
+
+.itemRow {
+  display: flex;
+  font-size: 8pt;
+  align-items: baseline;
+}
+
+.itemRow > div {
+  align-items: baseline;
+}
+
+.itemName {
+  font-weight: bold;
+}
+
+.itemPrice {
+  text-align: right;
+  flex-grow: 1;
+}
+
+.itemColor {
+  width: 50px;
+}
+
+.itemColor:before {
+  content: "\00a0";
+}
+
+.itemNo{
+  width: 30px;
+}
+.itemData1 {
+  text-align: right;
+  margin-left: 30px;
+  width: 65px;
+}
+.itemData2 {
+  text-align: right;
+  flex-grow: 1;
+  margin-right: 30px;
+}
+
+.itemData3 {
+  width: 80px;
+  text-align: right;
+
+}
+
+.itemQuantity:before {
+  content: "x";
+}
+
+.itemTaxable:after {
+  content: " T";
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+#qrcode {
+  align-self: center;
+  flex: 0 0 100px
+}
+
+.totals {
+  flex-grow: 1;
+  align-self: center;
+  font-size: 8pt;
+}
+
+.totals .row {
+  display: flex;
+  text-align: right;
+}
+
+.totals .section {
+  padding-top: 2mm;
+  margin-left: 15px;
+  /* background-color: red; */
+}
+
+.totalRow > div, .total > div {
+  text-align: right;
+  align-items: baseline;
+  font-size: 8pt;
+}
+
+.totals .col1 {
+  text-align: right;
+  flex-grow: 1;
+}
+
+.totals .col2 {
+   width: 42mm;
+}
+.totals .col4 {
+   width: 42mm;
+   /* padding-top: 50px; */
+}
+
+.totals .col2:empty {
+  display: none;
+}
+
+.totals .col3 {
+  width: 25mm;
+}
+
+.footer {
+  font-size: 11px;
+  margin-top: 50px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer .footer-child{
+  font-weight: 400;
+}
+
+
+.footer:empty {
+    display: none;
+}
+
+.eta {
+  padding: 1mm 0px;
+}
+
+.eta:empty {
+    display: none;
+}
+
+.eta:before {
+    content: "Estimated time order will be ready: ";
+  font-size: 8pt;
+  display: block;
+}
+
+.etaLabel {
+  font-size: 8pt;
+}
+
+.printType {
+  padding: 1mm 0px;
+  width: 100%;
+  background: grey;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.about {
+  font-size: 12pt;
+  overflow: hidden;
+  background: #FCEC52;
+  color: #3A5743;
+  border-radius: 7px;
+  padding: 0px;
+  position: absolute;
+  width: 500px;
+  text-align: center;
+  left: 50%;
+  margin-top: 50px;
+  margin-left: -250px;
+}
+
+
+
+.about li {
+  text-align: left;
+}
+

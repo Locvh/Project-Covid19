@@ -1,0 +1,58 @@
+
+.rad-navigation {
+  /* position: fixed; */
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  box-shadow: 0 0px 9px 4px rgba(0, 0, 0, 0.1), 0 -5px 2px 2px rgba(0, 0, 0, 0.1);
+  background: white;
+  margin-left: 230px;
+  width: 82%;
+  /* z-index: 10000; */
+}
+
+.links {
+  margin-right: 30px;
+  position: relative;
+}
+
+.links li {
+  list-style: none;
+  position: relative;
+  margin: 10px;
+  display: inline-block;
+}
+
+.rad-dropmenu-item.active {
+  display: block;
+  -webkit-animation: flipInX .3s ease;
+}
+
+.rad-logo-container {
+  width: 100%;
+  margin-left: 40px;
+  height: 50px;
+  float: left;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+
+.rad-toggle-btn,
+.rad-logo {
+  text-decoration: none;
+  /* position: relative; */
+  height: 50px;
+  line-height: 50px;
+  padding: 0 0 0 350px;
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #222533;
+  display: inline-block;
+  width: 100%;
+}
+
+

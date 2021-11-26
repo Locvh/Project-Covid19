@@ -1,0 +1,62 @@
+<!--
+  <header class="header_area header_three">
+    <div class="header_middel">
+      <div class="container-fluid">
+          <div class="middel_inner">
+              <div class="row align-items-center">
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="logo">
+                      <img src="assets/img/logo.png" alt="">
+                  </div>
+                </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h3 class="d-flex justify-content-center heading">Đơn đăng kí của các tiểu thương</h3>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </header>
+
+
+
+<br>
+<br> -->
+
+    <header>
+      <nav class="rad-navigation">
+        <div class="rad-logo-container">
+          <div class="rad-logo">Đơn đăng kí của các tiểu thương</div>
+        </div>
+      </nav>
+    </header>
+    <app-header-admin></app-header-admin>
+
+    <div class="tab_container">
+      <input id="tab1" type="radio" (click)="showProcess('New')" name="tabs" checked>
+      <label for="tab1"><i class="fa fa-envelope-o"></i><span>Đơn chờ xử lí</span></label>
+
+      <input id="tab3" type="radio" (click)="showProcess('Done')" name="tabs">
+      <label for="tab3"><i class="fa fa-check-circle"></i><span>Đã phê duyệt</span></label>
+
+      <input id="tab4" type="radio" (click)="showProcess('Reject')" name="tabs">
+      <label for="tab4"><i class="fa fa-times-circle"></i><span>Từ chối</span></label>
+
+      <section id="content1" class="tab-content" *ngIf="isCheck['Open']">
+        <app-prepare-contract></app-prepare-contract>
+      </section>
+      <section id="content1" class="tab-content" *ngIf="isCheck['New']">
+        <app-prepare-contract></app-prepare-contract>
+      </section>
+
+      <section id="content3" class="tab-content" *ngIf="isCheck['Done']">
+        <app-finish-contract></app-finish-contract>
+      </section>
+
+      <section id="content4" class="tab-content" *ngIf="isCheck['Reject']">
+          <app-reject-contract></app-reject-contract>
+      </section>
+
+    </div>

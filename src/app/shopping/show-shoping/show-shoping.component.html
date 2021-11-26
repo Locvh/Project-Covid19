@@ -1,0 +1,87 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center">
+  <mat-progress-spinner class="spinner" color="primary"> </mat-progress-spinner>
+</div>
+<div class="container">
+  <app-header></app-header>
+
+
+  <!-- <div class="shop_area shop_reverse"> -->
+    <!-- <div class="container"> -->
+      <!-- <div class="row">
+        <div class="col-lg-12 col-md-12"> -->
+          <div class="container5">
+              <div class="card-media">
+                <div class="card-media-object-container">
+                  <img class="card-media-object" src="{{image}}" alt="">
+                </div>
+                <div class="card-media-body">
+                  <div class="card-media-body-top">
+                    <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                      <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+                    </svg> {{shopName}}</p>
+                  </div>
+                  <span class="card-media-body-heading">
+                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{shopAddress}}</p>
+                  <p><i class="fa fa-mobile" aria-hidden="true"></i> {{shopPhone}} </p>
+                </span>
+                </div>
+              </div>
+
+            </div>
+
+          <div class="search-box">
+                <div class="input-wrapper1">
+                <input type="text" name="username" id="username" class="form__input" placeholder="Tìm sản phẩm"  [(ngModel)]="productNameFilter" autocomplete="off">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <button class="btn btn-outline-primary btn-edit" (click)="searchProduct()"><span>Tìm kiếm</span></button>
+                <button class="btn btn-outline-danger btn-edit" (click)="onReset()"><span>Đặt lại</span> </button>
+              </div>
+          </div>
+
+          <div class="shell">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"  *ngFor="let data of products| paginate: {itemsPerPage: pageSize, currentPage: pageNumber,totalItems: total}">
+                  <div class="wsk-cp-product">
+                    <div class="wsk-cp-img">
+                      <img src="{{data.imageProduct}}" alt="Product" class="img-responsive" [routerLink]="['/show-product-detail', data.productId]"/>
+
+                      <div *ngIf="data.percentPRO != 0">
+                        <div class="product_sale2">
+                          <span>-{{ data.percentPRO }} %</span>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="wsk-cp-text">
+                      <div class="title-product">
+                        <h3>{{data.productName}}</h3>
+                      </div>
+                      <div class="card-footer">
+                        <div class="wcf-left">
+                          <span >{{ data.promotionPrice.toLocaleString() }} VND</span>
+                        <div *ngIf="data.unitPrice != data.promotionPrice">
+                          <span class="price">{{ data.unitPrice.toLocaleString() }} VND</span>
+                        </div>
+
+                      </div>
+                        <div class="wcf-right"><a (click)="addtocart(data)" class="buy-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop_toolbar t_bottom">
+            <pagination-controls class="text-center"(pageChange)="pageNumber = $event" (click)="pageNevigation()"></pagination-controls>
+          </div>
+
+
+  <div class="space"></div>
+  <app-footer></app-footer>
+<!-- </div> -->
+
+
+

@@ -1,0 +1,10 @@
+
+<app-header></app-header>
+<div class="otp">
+   <h3> Mã OTP đã được gửi tới số điện thoại ******{{otpPhone}}</h3>
+   <br>
+   <h4> Mời bạn xác nhận mã otp</h4>
+  <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+  <h3 class="text-danger">{{message}}</h3>
+  <button class="button type1" (click)="handleClick()">Xác nhận OTP</button>
+</div>

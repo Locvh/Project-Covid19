@@ -1,0 +1,66 @@
+<header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img class="imageFPT" width="80px" height="80px" src="assets/img/quan1.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h1 class="d-flex justify-content-center heading">Thông tin mua hàng của khách hàng</h1>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <img class="imageFPT" width="130px" height="130px" src="assets/img/fpt.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header>
+
+
+  <div class="main-content text-center">
+    <div class="col-md-12 col-xs-12 col-sm-12 login_form ">
+      <div class="container-fluid">
+        <div class="row">
+          <h2>Xin mời nhập thông tin khách hàng</h2>
+        </div>
+          <form  [formGroup]="formvnpay" (ngSubmit)="onSubmit()" class="form-group">
+            <div class="row">
+              <div class="input-wrapper1">
+              <input type="text" name="username" id="username" class="form__input" placeholder="Tên người nhận" formControlName="receiverName" autocomplete="off">
+              <i class="fa fa-user bor" aria-hidden="true"></i>
+              </div>
+              <div class="text-danger" *ngIf="isSubmitted && formControls.receiverName.errors?.required">Chưa điền tên người nhận</div><br />
+            </div>
+            <div class="row">
+              <div class="input-wrapper1">
+              <input  type="text" name="username" id="username" class="form__input" placeholder="Số điện thoại người nhận" formControlName="receiverPhone" autocomplete="off">
+              <i class="fa fa-mobile" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger" *ngIf="isSubmitted && formControls.receiverPhone.errors?.required">Chưa điền số điện thoại người nhận</div><br />
+              <div class="text-danger" *ngIf="isSubmitted && formControls.receiverPhone.errors?.pattern">Phải là số</div>
+            </div>
+            <div class="row">
+              <div class="input-wrapper1">
+              <input  (keyup)="autocomplete()" matInput type="text" [matAutocomplete]="auto" name="username"
+                id="username" class="form__input" placeholder="Địa chỉ giao hàng" formControlName="receiverAddress" autocomplete="off">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+              </div>
+              <mat-autocomplete #auto="matAutocomplete" >
+                <mat-option *ngFor="let item of filteredOptions" [value]="item.description">
+                  {{item.description}}
+                </mat-option>
+              </mat-autocomplete>
+              <div class="text-danger" *ngIf="isSubmitted && formControls.receiverAddress.errors?.required">Chưa điền địa chỉ giao hàng</div><br />
+            </div>
+            <h3 class="text-danger">{{message}}</h3>
+            <button type="submit" class="button type1" >Xác nhận thông tin</button>
+
+          </form>
+      </div>
+    </div>
+  </div>
+

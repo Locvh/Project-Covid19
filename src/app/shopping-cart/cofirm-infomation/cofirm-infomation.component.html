@@ -1,0 +1,128 @@
+
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+<header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img class="imageFPT" width="80px" height="80px" src="assets/img/quan1.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                  <h3 class="d-flex heading">Xác nhận thông tin khách hàng và sản phẩm</h3>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                  <img class="imageFPT" width="130px" height="130px" src="assets/img/fpt.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+<br>
+<main class="page">
+  <section class="shopping-cart dark">
+    <div class="container">
+         <div class="block-heading">
+           <h2> Giỏ hàng của bạn</h2>
+         </div>
+         <div class="block-heading1">
+          <div class="Product1">
+                <div class="info1">
+                  <span class="nbProd">Sản phẩm</span>
+                </div>
+                <div class="info2">
+                    <span class="nbProd">Số lượng</span>
+                </div>
+                <div class="info3">
+                    <span class="nbProd">Số tiền(VND)</span>
+                </div>
+            </div>
+        </div>
+
+
+         <div class="content">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="items"  *ngFor="let item of products">
+              <div class="Shop">
+                <div class="ShopBag">
+                    <p style="font-weight: bolder; color:darkslategrey">
+                      <b class="shopName">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                          <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+                        </svg>{{item.sellerName}}</b>
+                    </p>
+                </div>
+                <div *ngFor="let elem of item.info; let i = index">
+                <div class="Product">
+                <img src="{{elem.imageProduct}}" alt="heel">
+                    <div class="part2">
+                        <p>{{elem.productName}}</p>
+                        <p style="color:gray">{{elem.unitProduct}}</p>
+                    </div>
+
+                    <div class="part3">
+                      <div class="part-left">
+                        <span class="nbProd">{{elem.quantity}}</span>
+                      </div>
+                      <div class="part-right">
+                        <span class=".UnitPrice" style="float: right"> {{(elem.promotionPrice * elem.quantity).toLocaleString()}}</span>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+
+            </div>
+
+            </div>
+          </div>
+
+
+
+          <div class="col-md-12 col-lg-4">
+            <div class="summary">
+              <h3></h3>
+                <div class="sumary-info">Thông tin khách hàng: </div>
+                <div class="info">Tên: {{info.customerName}} </div>
+                <div class="info">Số điện thoại: {{info.customerPhone}}</div>
+                <div class="info">Địa chỉ: {{info.customerAddress}}</div>
+                <div *ngIf="info.statusPayment === 'PROCESSVNPAY'">
+                  <span class="info text-danger">Phương thức thanh toán: <strong>Vnpay</strong></span>
+                </div>
+                <div *ngIf="info.statusPayment === 'COD'">
+                  <span class="info text-danger">Phương thức thanh toán:<strong>Tiền mặt</strong></span>
+                </div>
+                <hr>
+                <div class="info">Chi phí vận chuyển(VND) </div>
+                <div *ngFor="let elem of address">
+                  <div class="summary-item clearfix"><span class="text">{{elem.sellerName}} </span><span class="price">{{elem.shipFee.toLocaleString()}}</span></div>
+                  <!-- <div class="info" >: </div> -->
+                </div>
+                <hr>
+                <div class="summary-item clearfix"><span class="text">Tổng tiền phải trả(VND) </span><span class="price">{{(total+totalShip).toLocaleString()}}</span></div>
+                <!-- <div class="info">Tổng tiền phải trả: {{(total+totalShip).toLocaleString()}} VND</div> -->
+                <button class="button type1"type="submit" (click)=submit()>
+                  Thanh toán
+                </button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+ </section>
+</main>
+
+
+<app-footer></app-footer>

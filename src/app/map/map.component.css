@@ -1,0 +1,63 @@
+#map {
+  height: 700px;
+  width: 1000px;
+}
+.btn_search{
+  font-size: 25px;
+}
+
+.NumberCovid{
+  font-size: 15px;
+  margin-left: 80px;
+}
+.abcx{
+  margin-top: 70px;
+}
+.quandoan{
+  margin-top: 40px;
+}
+    .dot1 {
+      height: 25px;
+      width: 25px;
+      background-color:green;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 20px;
+
+    }
+    .dot2 {
+      height: 25px;
+      width: 25px;
+      background-color: yellow;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .dot3 {
+      height: 25px;
+      width: 25px;
+      background-color: orange;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .dot4 {
+      height: 25px;
+      width: 25px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 20px;
+
+    }
+
+
+    .block-heading{
+      margin-bottom: 10px;
+      padding: 10px 0px;
+      background-color: #fff;
+      text-transform: uppercase;
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+  }

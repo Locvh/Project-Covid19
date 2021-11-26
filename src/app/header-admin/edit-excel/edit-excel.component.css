@@ -1,0 +1,26 @@
+
+.search-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+
+.search-box .search-input{
+  border-radius: 20px;
+  color: black;
+  border: solid 1px #ccc;
+  outline: none;
+  width: 300px;
+  height: 40px;
+  background: #ededed url(~src/assets/img/search-icon.png) no-repeat 9px center;
+  padding: 9px 10px 9px 32px;
+}
+
+.search-box .btn_search{
+  font-size: 16px;
+  margin-left : 20px;
+  height: 40px;
+  width: 100px;
+}

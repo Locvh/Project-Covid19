@@ -1,0 +1,76 @@
+
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+<div id="login2" class="modal fade " data-keyboard="false" data-backdrop="static" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Đơn phản hồi từ khách hàng</h2>
+          <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <app-information-feedback [feedbackId]="feedbackId" *ngIf="ActivateEditPromotion">
+            </app-information-feedback>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <article class="banner-wrap">
+        <!-- <a class="logout" (click)="onBack()"><i class="fa fa-sign-out" aria-hidden="true"></i>Trở về trang chủ</a> -->
+        <div class="search-box">
+          <div class="input-wrapper1">
+            <input type="text" name="username" id="username" class="form__input" placeholder="Tìm số điện thoại"  [(ngModel)]="feedbackFilter" autocomplete="off">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <button class="btn btn-outline-primary btn-edit" (click)="searchfeedback()"><span>Tìm kiếm</span></button>
+            <button class="btn btn-outline-danger btn-edit" (click)="onReset()"><span>Đặt lại</span> </button>
+          </div>
+      </div>
+        </article>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+<thead>
+  <tr>
+    <th>STT</th>
+    <th>Ngày tạo phiếu</th>
+    <th>Số điện thoại</th>
+    <th>Tình trạng đơn</th>
+    <th>Chi tiết phản hồi</th>
+  </tr>
+</thead>
+<tbody>
+  <tr  *ngFor="let dataItem of feedbacks | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td>{{dataItem.no}}</td>
+    <td>{{dataItem.feedback.createDay}}</td>
+    <td>{{dataItem.customer.customerPhone}}</td>
+    <td><div  *ngIf="dataItem.feedback.status === 'Done'">
+      <span class="text-primary"><strong>Hoàn thành</strong></span>
+    </div></td>
+
+    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.feedback.feedbackId)" ><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+    </tr>
+</tbody>
+</table>
+
+  </div>
+</div>
+<div class="page">
+  <pagination-controls (pageChange)="pageNumber = $event" (click)="pageNevigation()"  align="center"></pagination-controls>
+  </div>
+
+  <!-- <div class="btn-back">
+      <a class="m-l btn btn-light btn-outline-primary button-edit " (click)="onBack()"> Quay về trang chủ</a >
+    </div> -->

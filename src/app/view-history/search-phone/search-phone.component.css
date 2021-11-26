@@ -1,0 +1,319 @@
+.heading{
+  font-weight: 600;
+  font-size: 24px;
+  color: #fff;
+}
+
+.container{
+  width: 400px;
+	height: auto;
+  box-shadow: 0px 0px 5px rgb(116, 116, 116);
+}
+
+.container .search-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.container .search-box .button-search{
+	position: relative;
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+	background: #fff;
+	margin: 20px;
+}
+
+.container .search-box .button-search:before,
+.container .search-box .button-search:after
+{
+	content: '';
+	position: absolute;
+	inset:0;
+	background: #f00;
+	transition: 0.5s;
+}
+
+.container .search-box .button-search:before,
+.container .search-box .button-search:after
+{
+	background: linear-gradient(45deg,#00ccff,#0e1538,#0e1538,#d400d4);
+}
+
+.container .search-box .button-search:hover:before
+{
+	inset: -4px;
+}
+
+.container .search-box .button-search:hover:after
+{
+	inset: -4px;
+	filter: blur(10px);
+}
+.container .search-box .button-search .span-search {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	background: #0e1538;
+	z-index: 1;
+	display: flex;
+	justify-content: center;;
+	align-items: center;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #fff;
+	border: 1px solid #040a29;
+	overflow: hidden;
+}
+.container .search-box .button-search .span-search::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -50%;
+	width: 100%;
+	height: 100%;
+	background:rgba(255,255,255,0.075);
+	transform: skew(25deg);
+}
+
+.container .input_code{
+  border-radius: 30px;
+  color: black;
+  border: solid 1px #ccc;
+  outline: none;
+  width: 150px;
+  height: 45px;
+  padding: 9px 10px 9px 32px;
+  margin-top: 10%;
+  margin-right: 20px;
+}
+
+.container .name_lable{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: black;
+  color: #000;
+  margin-top: 20px;
+}
+
+/* ------------------------------------ */
+
+/* thằng button thứ 2 */
+.button{
+  position: relative;
+  border: none;
+  background-color:#fff;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  margin: 1em 0.8em;
+  }
+  .type1{
+    color: #004ecb;
+  }
+  .type1::after,
+  .type1::before{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      border: 3px solid;
+      transition: all 0.6s ease;
+      border-radius: 2px;
+
+  }
+    .type1::after{
+      bottom: 0;
+      right: 0;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-bottom-color: #004ecb;
+      border-right-color: #004ecb;
+
+    }
+    .type1::before{
+      top: 0;
+      left: 0;
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+      border-top-color: #004ecb;
+      border-left-color: #004ecb;
+
+    }
+    .type1:hover:after,
+    .type1:hover:before{
+      width: 100%;
+      height: 100%;
+
+    }
+
+
+.spinner {
+  top: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background-color: #EEE;
+  border: 5px solid transparent;
+  border-top: 5px solid rgb(66, 173, 187);
+  border-right: 5px solid rgb(66, 173, 187);
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  transition: .2s;
+  -webkit-animation: loading 1s linear infinite;
+  -moz-animation: loading 1s linear infinite;
+  animation: loading 1s linear infinite;
+}
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------------------------- */
+@import "variables";
+
+.loading-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+.site-container {
+  font-size: 14px;
+  height: 100vh;
+  background: #f1f1f1;
+  overflow: hidden;
+}
+  .site-container .site-header {
+    height: 64px;
+  }
+  .site-container  .site-content {
+    height: calc(100vh - 65px);
+    padding: 0 15px;
+    overflow: auto;
+  }
+/* ----------------------------------------------------- */
+
+
+.recaptcha{
+  margin-left: 10%;
+  margin-top: 7%;
+}
+
+.icon{
+  background-color: rgb(252, 249, 249);
+  width: 60px;
+  height: 50px;
+  padding-top: 5px;
+  border-radius: 50%;
+  color: #1d1f29;
+}
+
+.container {
+  position: relative;
+  width: 450px;
+  padding: 30px 50px;
+  margin: 40px auto;
+  background:#ffffffec;
+  text-align: center;
+}
+.container .text {
+  margin: 40px 0 5px 0;
+}
+.container .text h1{
+  font-size: 2.5rem;
+}
+
+
+.input-wrapper1 {
+  display:inline-block;
+  position: relative;
+  width: 350px;
+ /* background-color: red; */
+}
+
+.input-wrapper1 .form__input{
+  width: 75%;
+  border:0px solid transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #aaa;
+  padding: 1em .5em .5em 2.5em;
+  outline:none;
+  margin:1.5em auto;
+  transition: all .5s ease;
+  font-size: 16px;
+  background: white ;
+}
+
+.input-wrapper1 img {
+  color: #aaa;
+  position: absolute;
+  top: 3.5rem;
+  left: 5rem;
+  font-size: 15px;
+  height: 22px;
+
+}
+
+.input-wrapper1 .form__input:focus{
+  border-bottom-color: #67daff;
+  background: white ;
+}
+.input-wrapper1 .form__input:focus + i {
+  color: #67daff;
+}
+
+
+
+.title-bill{
+  font-size: 20px;
+  font-weight: 400;
+
+}
+

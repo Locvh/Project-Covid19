@@ -1,0 +1,62 @@
+ <header class="header_area header_three">
+
+  <div class="header_middel">
+      <div class="container-fluid">
+          <div class="middel_inner">
+              <div class="row align-items-center">
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="logo">
+                      <img class="imageFPT" width="80px" height="80px" src="assets/img/quan1.png" alt="">
+                  </div>
+                </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h1 class="d-flex justify-content-center heading">Chợ mùa Covid chúng tôi vì bạn</h1>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <img class="imageFPT" width="130px" height="130px" src="assets/img/fpt.png" alt="">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="header_bottom sticky-header">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="main_menu_inner">
+                      <div class="main_menu">
+                         <nav>
+                              <ul >
+                                  <li class="active"><a [routerLink]="['']" class="li_edit">Trang chủ</a></li>
+
+                                  <li><a [routerLink]="['/admin']" class="li_edit">Kênh người quản lí </a></li>
+
+                                  <li><a [routerLink]="['/phone-registration']" class="li_edit">Trở thành tiểu thương của chợ</a></li>
+
+                                  <!-- [routerLink]="['/search-phone']" -->
+                                  <li><a (click)="checkPhone()" class="li_edit" >Đơn hàng của bạn</a></li>
+
+                                  <li><a [routerLink]="['/map']" class="li_edit">Bản đồ</a></li>
+
+                                  <!-- <li><a [routerLink]="['/cash-return']" class="li_edit">Test</a></li> -->
+
+                                  <!-- <li><a [routerLink]="['/vnpay-return']" class="li_edit">test</a></li> -->
+
+                                  <li>  <div class="btn_cart">
+                                    <div class="cart_link">
+                                      <a [routerLink]="['/shopping-cart']" class="icon_edit"><i class="fa fa-shopping-cart" aria-hidden="true"></i>{{ totalItem }}</a>
+                                  </div>
+
+                                  </div>
+                                </li>
+
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>

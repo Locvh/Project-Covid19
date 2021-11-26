@@ -1,0 +1,123 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+  <section>
+    <header>
+      <nav class="rad-navigation">
+        <div class="rad-logo-container">
+          <div class="rad-logo">Thông tin khuyến mãi</div>
+        </div>
+      </nav>
+    </header>
+  </section>
+
+
+
+  <app-seller></app-seller>
+
+  <div class="row">
+    <div class="col-md-12">
+          <article class="banner-wrap">
+              <button class="button1" data-target="#login" data-toggle="modal"  (click)="addClick()"><i class="fa fa-plus"></i></button>
+          </article>
+    </div>
+  </div>
+
+
+  <div id="login3" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Chọn sản phẩm được khuyến mãi</h2>
+          <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <app-choose-promotion [promotionID]="promotionID" *ngIf="ActivateAddEditDepComp">
+            </app-choose-promotion>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="login" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Thêm khuyến mãi</h2>
+          <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <app-add-promotion [promotion]="promotion" *ngIf="ActivateAddEditDepComp">
+            </app-add-promotion>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="login2" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Cập nhập khuyến mãi</h2>
+          <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <app-update-promotion [promotionID]="promotionID" *ngIf="ActivateAddEditDepComp">
+            </app-update-promotion>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cover" >
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+<thead>
+  <tr>
+    <th>STT</th>
+    <th>Tên sự kiện</th>
+    <th>Khuyến mãi(%)</th>
+    <th>Từ ngày</th>
+    <th>Đến ngày</th>
+    <th>Cập nhật khuyến mãi</th>
+    <th>Chọn khuyến mãi</th>
+  </tr>
+</thead>
+<tbody>
+  <tr  *ngFor="let control of promotions | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }; let i=index ">
+    <td >{{control.no}}</td>
+    <td>{{control.promotionTitle}}</td>
+    <td>{{control.percentPRO}}</td>
+    <td>{{control.startPromotion}}</td>
+    <td>{{control.endPromotion}}</td>
+
+    <td ><a class="name_info"  data-target="#login2" data-toggle="modal" (click)="EditClick(control.promotionId)" ><i class="fa fa-arrow-circle-o-up icons" ></i></a ></td>
+
+    <td ><a class="name_info"  data-target="#login3" data-toggle="modal" (click)="chooseProduct(control.promotionId)"><i class="fa fa-pencil-square-o icons" aria-hidden="true"></i></a ></td>
+  </tr>
+</tbody>
+</table>
+  </div>
+</div>
+<div class="page">
+  <pagination-controls (pageChange)="pageNumber = $event" (click)="nextPage()"  align="center"></pagination-controls>
+  </div>
+</div>
+
+
+
+
+

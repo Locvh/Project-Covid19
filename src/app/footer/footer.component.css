@@ -1,0 +1,9 @@
+.txtFooter{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 15px;
+  color: black;
+  margin-top: 100px;
+}
+

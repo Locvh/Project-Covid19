@@ -1,0 +1,38 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center">
+  <mat-progress-spinner class="spinner" color="primary"> </mat-progress-spinner>
+</div>
+  <div class="main-content text-center">
+    <div class="col-md-12 col-xs-12 col-sm-12 login_form ">
+      <div class="container-fluid">
+        <div class="row">
+
+        </div>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-group">
+
+            <div class="text-center">
+              <img [src]="imgSrc" width="450px" height="200px" (click)="fileUploader.click()" >
+            </div>
+
+            <div class="row">
+              <div class="input-wrapper1">
+              <label> Chọn hình ảnh</label>
+              <input type="file" accept="image/*" name="username" id="username" class="form__input" placeholder="chọn hình" #fileUploader  formControlName="imageFeedback"  (change)="showPreview($event)">
+              <i class="fa fa-file-image-o" aria-hidden="true"></i>
+            </div>
+            </div>
+
+
+            <div class="row">
+              <div class="input-wrapper1">
+              <label >Mô tả phản hồi</label>
+              <textarea type="text" name="username" id="username" class="form__input" placeholder="Mô tả phản hồi" formControlName="descriptionFeedback"></textarea>
+              <div class="text-danger" *ngIf="isSubmitted && formControls.descriptionFeedback.errors?.required">Chưa điền mô tả phản hồi</div><br />
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
+            </div>
+            <h3 class="text-danger message">{{message}}</h3>
+            <button type="submit" class="button type1" >Gửi phản hồi</button>
+          </form>
+      </div>
+    </div>
+  </div>

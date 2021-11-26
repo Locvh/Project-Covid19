@@ -1,0 +1,100 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+  </mat-progress-spinner>
+</div>
+
+<div class="receipt">
+  <div class="keepIt1">
+    CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+      Độc lập - Tự do - Hạnh phúc
+  </div>
+  <div class="orderNo">
+    Mã đơn: {{orderID}}
+  </div>
+  <div class="headerSubTitle">
+    Cảm ơn quý khách đã mua hàng tại
+  </div>
+  <div class="headerTitle">
+    {{shopName}}
+  </div>
+  <div class="headerTitle">
+    {{shopAddress}}
+  </div>
+  <div class="keepIt">
+    Hóa đơn bán lẻ
+  </div>
+  <div id="date">
+    {{dateBuy}}
+  </div>
+
+  <div class="keepItBody">
+    website: http://covidmarket.quan1hcm.gov.vn/shopping
+  </div>
+  <div class="keepItBody2">
+    khách hàng: {{customerName}}
+  </div>
+  <div class="keepItBody2">
+    Địa chỉ: {{customerAddress}}
+  </div>
+  <div class="keepItBody2">
+    Số điện thoại: {{customerPhone}}
+
+  </div>
+  <hr>
+
+  <div class="items" >
+      <div class="itemRow">
+        <div class="itemNo">STT</div>
+        <div class="itemName">Sản phẩm</div>
+        <div class="itemData1">Giá (VND)</div>
+        <div class="itemData2">Số Lượng</div>
+        <div class="itemData3">Tổng tiền (VND)</div>
+      </div>
+      <div class="itemRow" *ngFor="let dataBillInfo of billInfo let i=index">
+        <div class="itemNo">{{i+1}}</div>
+        <div class="itemColor">{{dataBillInfo.productName}}</div>
+        <div class="itemData1">{{dataBillInfo.priceProduct.toLocaleString()}}</div>
+        <div class="itemData2">{{dataBillInfo.quantity}}</div>
+        <div class="itemData3"> {{dataBillInfo.subTotal.toLocaleString()}}</div>
+        <br>
+      </div>
+
+  </div>
+
+  <hr>
+<div class="flex">
+    <div id="qrcode"></div>
+    <div class="totals">
+      <div class="section">
+        <div class="row">
+          <div class="col2">Tổng số lượng</div>
+          <div class="col3">{{totalQuantity}}</div>
+        </div>
+        <div class="row">
+          <div class="col2">Phí vận chuyển (VND):</div>
+          <div class="col3"> {{shipFee.toLocaleString()}}  </div>
+        </div>
+        <div class="row">
+          <div class="col2">Tổng tiền (VND):</div>
+          <div class="col3">{{totalPrice.toLocaleString()}} </div>
+        </div>
+        <div class="row">
+          <div class="col2">Thanh toán:</div>
+          <div *ngIf="statusPayment=='PROCESSVNPAY'" class="col3">
+          <span> VNpay</span>
+          </div>
+          <div *ngIf="statusPayment=='COD'" class="col3">
+            <span>Tiền mặt</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-child">Website chợ mùa Covid được quận đoàn quận 1 quản lí để
+      hỗ trợ người dân mua đồ trong các chợ truyền thống.</div>
+    <div >Chợ mùa Covid</div>
+    <div >Chúc quý khách một ngày tốt lành.</div>
+  </div>
+</div>

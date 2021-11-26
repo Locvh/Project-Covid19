@@ -1,0 +1,48 @@
+
+
+<aside>
+<nav class="rad-sidebar">
+<br>
+<br>
+<p class="title">Chào tiểu thương: {{shopname}}</p>
+<p> Danh mục </p>
+<a [routerLink]="['/view-history-seller']">
+  <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+  Quản lý hóa đơn
+</a>
+<a [routerLink]="['/show-product-seller']">
+  <i class="fa fa-product-hunt" aria-hidden="true"></i>
+  Quản lý sản phẩm
+</a>
+<a [routerLink]="['/show-promotion']" >
+  <i class="fa fa-percent" aria-hidden="true"></i>
+  Thông tin khuyến mãi
+</a>
+<a [routerLink]="['/update-information']">
+  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+  Cập nhập thông tin
+</a>
+<a [routerLink]="['/change-password']" >
+  <i class="fa fa-exchange" aria-hidden="true"></i>
+  Đổi mật khẩu
+</a>
+
+<div *ngIf="isTransport =='True'">
+<a [routerLink]="['/shipping']">
+  <i class="fa fa-motorcycle" aria-hidden="true"></i>
+  Phí vận chuyển
+</a>
+</div>
+
+<a [routerLink]="['/show-feedback-seller']">
+  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+  Phản hồi từ khách hàng
+</a>
+
+<a (click)="logOut()">
+  <i class="fa fa-power-off" aria-hidden="true"></i>
+  Đăng xuất
+</a>
+
+</nav>
+</aside>

@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+<div class="product_details">
+    <div class="container">
+                <section>
+                  <div data-product-detail>
+                    <div class="img-card">
+                        <img src="{{product.imageProduct}}" />
+                    </div>
+                    <div class="product-details">
+                      <h2>{{product.productName}} </h2>
+                      <p>Danh mục: {{product.nameCategory}}</p>
+                      <p>Đơn vị tính: {{product.unitProduct}}</p>
+                      <div class="container_swap">
+                        <div  *ngIf="product.unitPrice != product.promotionPrice">
+                          <div class="div_left">{{product.unitPrice.toLocaleString()}} VND</div>
+                          <div class="div_right">{{product.promotionPrice.toLocaleString()}} VND
+                        </div>
+                          </div>
+                        <div *ngIf="product.unitPrice == product.promotionPrice">
+                          <div class="div_right">{{product.promotionPrice.toLocaleString()}} VND </div>
+                        </div>
+                      </div>
+                      <p class="des">Mô tả: {{product.descriptionProduct}}</p>
+                      <button (click)=addtocart()>Mua Ngay</button>
+                    </div>
+                  </div>
+                </section>
+    </div>
+</div>
+
+
+<!-- <div class="container text-center">
+  <h1 class="txt-center">Sản phẩm đang được khuyến mãi cao nhất</h1>
+  </div>
+
+  <div class="shell">
+  <div class="container">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let dataProSale of productTopSales">
+      <div class="wsk-cp-product">
+        <div class="wsk-cp-img">
+          <img src="{{dataProSale.imageProduct}}" alt="Product" class="img-responsive" [routerLink]="['/show-product-detail', dataProSale.productId]"/>
+          <div *ngIf="dataProSale.percentPRO != 0">
+            <div class="product_sale2">
+              <span>-{{ dataProSale.percentPRO }} %</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="wsk-cp-text">
+          <div class="title-product">
+            <h3>{{dataProSale.productName}}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="wcf-left">
+            <div *ngIf="dataProSale.unitPrice != dataProSale.promotionPrice">
+              <span class="price">{{ dataProSale.unitPrice.toLocaleString() }} VND</span>
+            </div>
+            <span >{{ dataProSale.promotionPrice.toLocaleString() }} VND</span>
+          </div>
+            <div class="wcf-right"><a (click)="addtocart(dataProSale)" class="buy-btn"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></div>
+          </div>
+
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+  </div>
+  </div> -->
+
+
+<div class="space"></div>
+<app-footer></app-footer>

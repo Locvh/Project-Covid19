@@ -1,0 +1,55 @@
+<!-- <nav class="navbar navbar-expand-sm bg-light navbar-dart">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <button [routerLink]="'/shopping'" class="m-l btn btn-light btn-outline-primary btn_search" Button>Đi chợ</button>
+    </li>
+  </ul>
+
+</nav> -->
+<!-- <header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img src="assets/img/logo.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h1 class="d-flex justify-content-center">Bản đồ vị trí Covid quận 1</h1>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header> -->
+  <app-header></app-header>
+
+  <br>
+  <br>
+  <div class="block-heading">
+    <h2>Bản đồ biểu hiện số ca Covid quận 1</h2>
+  </div>
+<aside class="sidebar abcx col-lg-3 col-md-3 col-sm-3 ">
+  <div align="center" class="quandoan">
+    <img   src="assets/img/Quandoan1.png"  >
+    <h3>Quận 1</h3><br>
+  </div>
+<div align="center" ><h3>SỐ CA DƯƠNG TÍNH COVID </h3></div>
+<div align="center"><h3>TÍNH THEO PHƯỜNG (ĐVT: CA)</h3></div>
+<div align="center"><h5>Tính tới ngày: {{curDate | date:'dd-MM-yyyy'}}
+</h5> </div><br>
+<div class="NumberCovid"><span class="dot1"></span>0</div><br>
+<div  class="NumberCovid"><span class="dot2"></span>Từ 1 tới 50</div><br>
+<div  class="NumberCovid"><span class="dot3"></span>Từ 51 tới 100</div><br>
+<div  class="NumberCovid"><span class="dot4"></span>Trên 100</div><br>
+</aside>
+<section class="main-content col-lg-9 col-md-9 col-sm-9">
+  <div class="products-row row">
+    <div id="map"></div>
+  </div>
+</section>
+<app-footer></app-footer>

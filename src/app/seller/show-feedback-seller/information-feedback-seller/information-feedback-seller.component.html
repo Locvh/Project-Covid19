@@ -1,0 +1,32 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+  </div>
+  <div class="sidenav">
+    <div class="text">
+
+          <p>Tên khách hàng: {{Info.customer.customerName}}</p>
+          <p>Số điện thoại khách hàng: {{Info.customer.customerPhone}}</p>
+          <p>Tên Cửa Hàng: {{Info.sellerName}}</p>
+          <p>Lý do: {{Info.description}}</p>
+          <div *ngIf="Info.status === 'New'">
+          <p>Tình Trạng Đơn: Mới</p>
+    </div>
+    </div>
+    <div class="images">
+      <h3 class="textImage">Ảnh Phản Hồi Từ Khách Hàng</h3>
+        <div class="imageBL">
+      <img src="{{Info.imageFeedback}}" alt="" width="350" height="250">
+        </div>
+    </div>
+
+    <div id="image-viewer">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="full-image">
+    </div>
+
+  </div>
+
+
+

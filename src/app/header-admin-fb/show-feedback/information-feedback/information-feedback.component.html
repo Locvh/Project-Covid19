@@ -1,0 +1,37 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner" color="primary">
+
+  </mat-progress-spinner>
+</div>
+
+<div class="sidenav">
+  <div class="text">
+    <p>Tên khách hàng: {{Info.customer.customerName}}</p>
+    <p>Số điện thoại khách hàng: {{Info.customer.customerPhone}}</p>
+    <p>Tên Cửa Hàng: {{Info.sellerName}}</p>
+    <p>Lý do: {{Info.description}}</p>
+    <div *ngIf="Info.status === 'Done'">
+      <p>Tình Trạng Đơn: Đơn đã được xử lí</p>
+    </div>
+    <div *ngIf="Info.status === 'Reject'">
+      <p>Tình Trạng Đơn: Đơn đã bị từ chối</p>
+    </div>
+  </div>
+
+  <div class="images">
+    <!-- <h3 class="textImage">Ảnh Phản Hồi Từ Khách Hàng</h3> -->
+    <div class="imageBL">
+      <img src="{{Info.imageFeedback}}" alt="" width="350" height="250">
+    </div>
+  </div>
+
+  <div id="image-viewer">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="full-image">
+  </div>
+  <!-- Lê Đức -->
+  <hr>
+  <h4 align="center" class="feedbackAdmin">Phản hồi của quận đoàn</h4>
+  <p align="center">{{Info.descriptionAdmin}}</p>
+  <!-- -------------- -->
+</div>

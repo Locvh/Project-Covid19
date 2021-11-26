@@ -1,0 +1,115 @@
+<header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img src="assets/img/logo.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h3 class="d-flex justify-content-center">Trang cập nhập vị bảng đồ</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header>
+<section class="py-5">
+  <!--main page-->
+
+  <section class="py-5">
+
+    <section class="section-main bg padding-y">
+      <div class="container">
+
+        <div class="row">
+          <div  class="col-lg-12 col-md-12 text-center">
+              <div class="search-box">
+                <input type="text" placeholder="Tìm sản phẩm" [(ngModel)]="houseAddressFilter"class="search-input"/>
+                <button  class="m-l btn btn-light btn-outline-primary btn_search"  (click)="searchHouse()">Tìm kiếm</button>
+                <button class="btn btn-outline-danger d-inline float-right btn_search"  (click)="onReset()">Đặt lại</button>
+            </div>
+
+          </div>
+      </div>
+      </div>
+      </section>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="border-0 bg-light">
+              <div class="p-2 px-3 text-uppercase" align="center">STT</div>
+            </th>
+            <th scope="col" class="border-0 bg-light">
+              <div class="p-2 px-3 text-uppercase" align="center">Địa chỉ</div>
+            </th>
+            <th scope="col" class="border-0 bg-light">
+              <div class="p-2 px-3 text-uppercase" align="center">Tọa độ X</div>
+            </th>
+            <th scope="col" class="border-0 bg-light">
+              <div class="py-2 text-uppercase" align="center" >Tọa độ Y</div>
+            </th>
+            <th scope="col" class="border-0 bg-light">
+              <div  type="date" class="py-2 text-uppercase" align="center">Ngày phong tỏa</div>
+            </th>
+            <th scope="col" class="border-0 bg-light">
+              <div type="date" class="py-2 text-uppercase" align="center">Ngày dỡ phong tỏa</div>
+            </th>
+            <th scope="col" class="border-0 bg-light">
+                <div class="py-2 text-uppercase" align="center">Trạng thái</div>
+              </th>
+            <th scope="col" class="border-0 bg-light">
+                <div class="py-2 text-uppercase" align="center">Chỉnh sửa</div>
+              </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of houses | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }; let i=index ">
+            <td align="center">{{i+1}}</td>
+            <td class="border-0 align-middle" align="center">{{item.address}}</td>
+            <td class="border-0 align-middle" align="center">{{item.coordinatesX}}</td>
+            <td class="border-0 align-middle" align="center">{{item.coordinatesY}}</td>
+            <td  class="border-0 align-middle"align="center">{{item.lockdownDate}}</td>
+            <td class="border-0 align-middle"align="center">{{item.releaseDate}}</td>
+            <td class="border-0 align-middle" align="center" >
+                <div *ngIf="!item.isLockdown">
+                  <span class="text-danger"><strong>Phong tỏa</strong></span>
+                </div>
+                <div *ngIf="item.isLockdown">
+                  <span class="text-primary"><strong>Đã Dỡ</strong></span>
+                </div>
+              </td>
+              <td class="border-0 align-middle" align="center">
+                  <div *ngIf="!item.isLockdown">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="ProcessHouse(item.houseID)"
+                    >
+                      Dỡ phong tỏa
+                    </button>
+                  </div>
+                  <div *ngIf="item.isLockdown">
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      (click)="deleteHouse(item.houseID)"
+                    >
+                      Xóa vị trí
+                    </button>
+                  </div>
+              </td>
+          </tr>
+        </tbody>
+        <tr>
+          <br><td> <br><a class="btn btn-outline-success rounded-pill py-2 d-md-block button-edit btn_back"  [routerLink]="['/header-admin']" > Quay về trang chủ</a ></td>
+        </tr>
+      </table>
+  </section>
+  <pagination-controls class="text-center" (pageChange)="pageNumber = $event" (click)="onload()"></pagination-controls>

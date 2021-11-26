@@ -1,0 +1,53 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+  <app-header></app-header>
+
+  <div class="tab_container">
+    <input id="tab1" type="radio" (click)="showProcess('prepare')" name="tabs" checked>
+    <label for="tab1"><i class="fa fa-cart-arrow-down"></i><span>Chờ xử lí</span></label>
+
+    <input id="tab2" type="radio" (click)="showProcess('processing')" name="tabs">
+    <label for="tab2"><i class="fa fa-paper-plane"></i><span>Đang xử lí</span></label>
+
+    <input id="tab3" type="radio" (click)="showProcess('finish')" name="tabs">
+    <label for="tab3"><i class="fa fa-check-circle"></i><span>Hoàn thành</span></label>
+
+    <input id="tab4" type="radio" (click)="showProcess('cancel')" name="tabs">
+    <label for="tab4"><i class="fa fa-times-circle"></i><span>Từ chối</span></label>
+
+    <input id="tab5" type="radio" (click)="showProcess('complain')" name="tabs">
+    <label for="tab5"><i class="fa fa-commenting"></i><span>Khiếu nại</span></label>
+
+    <section id="content1" class="tab-content" *ngIf="isCheck['open']">
+            <app-show-view-history-prepare-user></app-show-view-history-prepare-user>
+    </section>
+    <section id="content1" class="tab-content" *ngIf="isCheck['prepare']">
+            <app-show-view-history-prepare-user></app-show-view-history-prepare-user>
+    </section>
+
+    <section id="content2" class="tab-content"  *ngIf="isCheck['processing']">
+      <app-show-view-history-processed-user></app-show-view-history-processed-user>
+    </section>
+
+    <section id="content3" class="tab-content" *ngIf="isCheck['finish']">
+      <app-show-view-history-finish-user></app-show-view-history-finish-user>
+    </section>
+
+    <section id="content4" class="tab-content" *ngIf="isCheck['cancel']">
+     <app-show-view-history-cancel-user></app-show-view-history-cancel-user>
+    </section>
+
+    <section id="content5" class="tab-content" *ngIf="isCheck['complain']">
+      <app-show-view-history-feedback-user></app-show-view-history-feedback-user>
+      </section>
+  </div>
+<br>
+<br>
+<br>
+<br>
+  <app-footer></app-footer>
+
+

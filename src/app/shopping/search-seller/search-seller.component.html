@@ -1,0 +1,234 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+
+
+<div class="container">
+<app-header></app-header>
+
+<mat-carousel
+timings="200ms ease-in"
+[autoplay]="true"
+interval="5000"
+color="accent"
+maxWidth="auto"
+proportion="25"
+slides="4"
+[loop]="true"
+[hideArrows]="false"
+[hideIndicators]="false"
+[useKeyboard]="true"
+[useMouseWheel]="false"
+orientation="ltr"
+>
+<mat-carousel-slide
+  #matCarouselSlide
+  *ngFor="let slide of slides; let i = index"
+  [image]="slide.image"
+  overlayColor="#00000040"
+  [hideOverlay]="false"
+></mat-carousel-slide>
+</mat-carousel>
+
+
+<div class="row">
+  <div></div>
+  <div class="col-md-12 ">
+      <article class="search-box">
+            <div class="input-wrapper1">
+            <input type="text" name="username" id="username" class="form__input" placeholder="Tìm Cửa Hàng"  [(ngModel)]="sellerFilter"  autocomplete="off">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <button class="m-l btn btn-light btn-outline-primary btn-edit" [routerLink]="['/view-list-seller',sellerFilter]"><span>Tìm kiếm</span></button>
+          </div>
+      </article>
+  </div>
+</div>
+
+
+<div class="col-lg-3 col-md-12">
+
+  <div class="sidebar_widget">
+    <div class="widget_list widget_categories">
+        <h2>Danh mục sản phẩm</h2>
+        <ul>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value1]">Vật dụng gia đình <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value2]">Đồ uống <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value3]">Vệ sinh nhà cửa <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value4]">Chăm sóc cá nhân<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value5]">Bánh kẹo<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value6]">Sữa<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value7]">Gạo, bột, đồ khô<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value8]">Rau, củ, trái cây<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value9]">Thịt, cá, hải sản<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+            <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value10]">Gia vị<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
+
+        </ul>
+    </div>
+</div>
+
+  <img src="assets/img/khuyencao.jpg" />
+  <div class="quandoan">
+    <img src="assets/img/Quandoan1.png" />
+  </div>
+
+  <h1 align="center">Quận 1</h1>
+  <div align="center" class="text">
+    <h4>Sản phẩm trí tuệ của Quận Đoàn 1</h4>
+  </div>
+  <div align="center">
+    <h4 align="center">
+      Trong việc hỗ trợ người dân đi chợ trong đợt giãn cách.
+    </h4>
+  </div>
+</div>
+
+<div class="col-lg-9 col-md-12">
+  <div class="component">
+<div class="container">
+  <h1 class="txt-center">Sản phẩm được mua nhiều nhất</h1>
+  </div>
+
+  <div class="shell">
+  <div class="container">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let dataPro of productTop">
+      <div class="wsk-cp-product">
+        <div class="wsk-cp-img">
+          <img src="{{dataPro.imageProduct}}" alt="Product" class="img-responsive" [routerLink]="['/show-product-detail', dataPro.productId]"/>
+          <div *ngIf="dataPro.percentPRO != 0">
+            <div class="product_sale2">
+              <span>-{{ dataPro.percentPRO }} %</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="wsk-cp-text">
+          <div class="category">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+              <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+            </svg> {{dataPro.sellerName}}</span>
+          </div>
+          <hr width = "172">
+          <div class="title-product">
+            <h3>{{dataPro.productName}}</h3>
+          </div>
+
+          <div class="card-footer">
+            <div class="wcf-left">
+            <span >{{ dataPro.promotionPrice.toLocaleString() }} VND</span>
+            <div *ngIf="dataPro.unitPrice != dataPro.promotionPrice">
+              <span class="price">{{ dataPro.unitPrice.toLocaleString() }} VND</span>
+            </div>
+
+
+          </div>
+            <div class="wcf-right"><a (click)="addtocart(dataPro)" class="buy-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></div>
+          </div>
+
+
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+  </div>
+  </div>
+</div>
+
+<div class="component1">
+  <div class="container">
+    <h1 class="txt-center">Sản phẩm đang được khuyến mãi cao nhất</h1>
+    </div>
+
+    <div class="shell">
+    <div class="container">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let dataProSale of productTopSales">
+        <div class="wsk-cp-product">
+          <div class="wsk-cp-img">
+            <img src="{{dataProSale.imageProduct}}" alt="Product" class="img-responsive" [routerLink]="['/show-product-detail', dataProSale.productId]"/>
+            <div *ngIf="dataProSale.percentPRO != 0">
+              <div class="product_sale2">
+                <span>-{{ dataProSale.percentPRO }} %</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="wsk-cp-text">
+            <div class="category">
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+              </svg>{{dataProSale.sellerName}}</span>
+            </div>
+            <hr width = "172">
+            <div class="title-product">
+              <h3>{{dataProSale.productName}}</h3>
+            </div>
+            <div class="card-footer">
+              <div class="wcf-left">
+              <span >{{ dataProSale.promotionPrice.toLocaleString() }} VND</span>
+              <div *ngIf="dataProSale.unitPrice != dataProSale.promotionPrice">
+                <span class="price">{{ dataProSale.unitPrice.toLocaleString() }} VND</span>
+              </div>
+
+            </div>
+              <div class="wcf-right"><a (click)="addtocart(dataProSale)" class="buy-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+    </div>
+    </div>
+  </div>
+
+  <div class="component">
+  <div class="container">
+          <div class="row">
+              <div class="col-lg-12 col-md-12">
+                      <h1 class="edit">Cửa hàng được ghé nhiều nhất</h1>
+                   <div class="row shop_wrapper">
+                        <owl-carousel-o [options]="customOptions2">
+                          <ng-template carouselSlide *ngFor="let data of sellersTop ">
+                            <div class="product_thumb1">
+                            <figure class="snip1249" >
+                              <div class="image" [routerLink]="['/show-product',data.sellerId]">
+                                <img src="{{data.imageSeller}}" alt="sample90" />
+                              </div>
+                              <figcaption>
+                                <h3><svg xmlns="http://www.w3.org/2000/svg" width="23" height="20" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                                  <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+                                </svg> {{data.shopName}}</h3>
+                                <p> {{data.addressShop}}</p>
+                                <div class="price2">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pin-map-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+                                    <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+                                  </svg>
+                                  {{(data.distance/1000).toFixed(0)}} Km
+                                </div>
+                              </figcaption>
+                            </figure>
+                          </div>
+                    </ng-template>
+                  </owl-carousel-o>
+                  </div>
+
+
+
+              </div>
+          </div>
+      </div>
+      </div>
+
+    </div>
+
+<br>
+<br>
+<br>
+
+<app-footer></app-footer>
+</div>
+

@@ -1,0 +1,31 @@
+<!-- <header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img class="imageFPT" width="80px" height="80px" src="assets/img/quan1.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h3 class="d-flex justify-content-center heading">Xác nhận OTP của Khách hàng</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <img class="imageFPT" width="130px" height="130px" src="assets/img/fpt.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header> -->
+  <app-header></app-header>
+
+  <div class="otp">
+   <h3> Mã OTP đã được gửi tới số điện thoại ******{{otpPhone}}</h3>
+   <br>
+   <h4> Mời bạn xác nhận mã otp</h4>
+    <ng-otp-input id="ok" #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+    <h3 class="text-danger">{{message}}</h3>
+    <button class="button type1" (click)="handleClick()">Xác nhận OTP</button>
+  </div>

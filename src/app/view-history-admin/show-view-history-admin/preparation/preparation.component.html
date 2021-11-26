@@ -1,0 +1,139 @@
+ <div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+<div id="login2" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button data-dismiss="modal" class="close" (click)="closeClick()">&times;</button>
+        <form>
+          <app-view-history-detail-admin [orderId]="orderId" *ngIf="ActivateEditPromotion">
+          </app-view-history-detail-admin>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="login3" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle fa-4x" aria-hidden="true"></i></h2>
+        </div>
+        <div class="modal-body">
+            <div class="write-body">Đơn hàng đã được chuyển qua khâu xử lí</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary btnok" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="login4" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 class="modal-title2" id="exampleModalLabel"><i class="fa fa-times-circle fa-4x" aria-hidden="true"></i></h2>
+        </div>
+        <div class="modal-body">
+            <div class="write-body2">{{message_note}}</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary btnok" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+        <article class="banner-wrap">
+          <div class="col-lg-6 col-md-6 col-sm-6 " >
+            <div class="search-box">
+              <div class="input-wrapper1">
+                  <input matInput [matDatepicker]="pickerFrom" name="username" id="username" class="form__input1" [(ngModel)]="dateForm" placeholder="Từ ngày" disabled>
+                  <mat-datepicker-toggle matSuffix [for]="pickerFrom" ></mat-datepicker-toggle>
+                  <mat-datepicker #pickerFrom disabled="false" ></mat-datepicker>
+              </div>
+              <div class="input-wrapper1">
+                <input matInput [matDatepicker]="pickerTo" name="username" id="username" class="form__input1" [(ngModel)]="dateTo" placeholder="Từ ngày" disabled>
+                <mat-datepicker-toggle matSuffix [for]="pickerTo" ></mat-datepicker-toggle>
+                <mat-datepicker #pickerTo disabled="false" ></mat-datepicker>
+            </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 ">
+          <div class="search-box">
+            <div class="input-wrapper1">
+              <input type="text" name="username" id="username" class="form__input" placeholder="Tìm số điện thoại"  [(ngModel)]="billFilter" autocomplete="off">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <button class="btn btn-outline-primary btn-edit" (click)="searchBill()"><span>Tìm kiếm</span></button>
+              <button class="btn btn-outline-danger btn-edit" (click)="onReset()"><span>Đặt lại</span> </button>
+            </div>
+          </div>
+          </div>
+          </article>
+    </div>
+  </div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table">
+	<thead>
+		<tr>
+			<th>STT</th>
+			<th>Ngày mua</th>
+			<th>Tổng số tiền(VND)</th>
+			<th>Tình trạng đơn hàng</th>
+			<th>Cập nhật trạng thái</th>
+			<th>Đơn hàng chi tiết</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr  *ngFor="let dataItem of bills | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+      <td>{{dataItem.no}}</td>
+      <td>{{dataItem.order.dayBuy}}</td>
+      <td>{{dataItem.order.totalPrice.toLocaleString()}}</td>
+      <td>  <div *ngIf="dataItem.order.statusOrder === 'New'">
+        <span class="text-primary"><strong>Chờ xử lí</strong></span>
+      </div></td>
+      <td>
+          <div *ngIf="dataItem.order.statusOrder === 'New'">
+            <a class="icon-yes"
+              (click)="ProcessOrder(dataItem.order.orderId)"
+              data-target="#login3" data-toggle="modal"
+            >
+            <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+          </a>
+            <a class="icon-no"
+              (click)="CancelOrder(dataItem.order.orderId)"
+              data-target="#login4" data-toggle="modal"
+            >
+            <i class="fa fa-times fa-2x" ></i>
+        </a>
+          </div>
+      </td>
+      <td ><a class="name_info" data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.order.orderId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+      </tr>
+	</tbody>
+</table>
+
+		</div>
+	</div>
+  <div class="page">
+    <pagination-controls (pageChange)="pageNumber = $event" (click)="nextPage()"  align="center"></pagination-controls>
+    </div>
+      <button class="btn_save" (click)="saveFilePrepare()">Xuất file Excel</button>
+      <h3 class="red">{{message}}</h3>

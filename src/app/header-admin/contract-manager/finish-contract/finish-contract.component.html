@@ -1,0 +1,89 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+
+<div id="login2" class="modal fade " data-keyboard="false" data-backdrop="static" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Thông tin của tiểu thương đăng kí</h2>
+          <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <app-information-contract [registerFormId]="registerFormId" *ngIf="ActivateEditPromotion">
+            </app-information-contract>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <!-- <a class="logout" [routerLink]="['/header-admin']"><i class="fa fa-sign-out" aria-hidden="true"></i>Trở về trang chủ</a> -->
+      <article class="banner-wrap">
+          <div class="search-box">
+              <div class="input-wrapper1">
+                <input type="text" name="username" id="username" class="form__input" placeholder="Tìm số điện thoại"  [(ngModel)]="registerFormFilter" autocomplete="off">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <button class="btn btn-outline-primary btn-edit" (click)="searchContract()"><span>Tìm kiếm</span></button>
+                <button class="btn btn-outline-danger btn-edit" (click)="onReset()"><span>Đặt lại</span> </button>
+
+              </div>
+          </div>
+      </article>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+<thead>
+  <tr>
+    <th>STT</th>
+    <th>Ngày đăng ký</th>
+    <th>Số điện thoại</th>
+    <th>Trạng thái</th>
+    <th>Đơn vị vận chuyển</th>
+    <th>Cập nhập trạng thái</th>
+    <th>Chi tiết</th>
+  </tr>
+</thead>
+<tbody>
+  <tr  *ngFor="let  dataItem of  registerForms | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td>{{dataItem.no}}</td>
+    <td>{{dataItem.dayRegister}}</td>
+    <td>{{dataItem.phoneNumber}}</td>
+    <td>  <div  *ngIf="dataItem.statusContract === 'Done'">
+      <span class="text-primary"><strong>Đơn đã phê duyệt</strong></span>
+    </div></td>
+
+    <td>
+    <div  *ngIf="dataItem.isTransport === true">
+      <span class="text-primary"><strong>Tiểu thương</strong></span>
+    </div>
+    <div  *ngIf="dataItem.isTransport === false">
+      <span class="text-primary2"><strong>Quận đoàn</strong></span>
+    </div></td>
+    <td >
+      <label><input type="checkbox" class="ios-switch" [checked]="dataItem.isTransport" (change)="updateIsTransportContract(dataItem.registerFormId,!dataItem.isTransport)" /><div><div></div></div></label>
+    </td>
+
+    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.registerFormId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+    </tr>
+</tbody>
+</table>
+
+  </div>
+</div>
+<div class="page">
+  <pagination-controls (pageChange)="pageNumber = $event" (click)="nextPage()"  align="center"></pagination-controls>
+  </div>
+
+  <!-- <div class="btn-back">
+      <a class="m-l btn btn-light btn-outline-primary  button-edit " [routerLink]="['/header-admin']" > Quay về trang chủ</a >
+    </div> -->

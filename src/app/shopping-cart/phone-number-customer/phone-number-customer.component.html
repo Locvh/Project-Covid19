@@ -1,0 +1,43 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+<!-- <header class="header_area header_three">
+  <div class="header_middel">
+    <div class="container-fluid">
+        <div class="middel_inner">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <img class="imageFPT" width="80px" height="80px" src="assets/img/quan1.png" alt="">
+                </div>
+              </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <h3 class="d-flex justify-content-center heading">Thông tin mua hàng của khách hàng</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <img class="imageFPT" width="130px" height="130px" src="assets/img/fpt.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  </header> -->
+  <app-header></app-header>
+
+  <div class="container">
+    <div class="text">
+        <h1>Xác nhận số điện thoại của khách hàng</h1>
+    </div>
+    <form class="form"  [formGroup]="form" (ngSubmit)="sendLoginCode()">
+      <i class="fa fa-mobile fa-3x icon" aria-hidden="true"></i>
+      <h1></h1>
+      <div class="input-wrapper1">
+        <input type="text" name="username" id="username" class="form__input" placeholder="Nhập số điện thoại" formControlName="phoneFilter"  autocomplete="off">
+        <img src="assets/img/coVN.png" />
+      </div>
+      <div class="recaptcha" id="recaptcha-container"></div>
+       <button [disabled]="!form.valid" type="submit" class="button type1">Tiếp tục</button>
+    </form>
+    </div>

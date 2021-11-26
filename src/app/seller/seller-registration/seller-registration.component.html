@@ -1,0 +1,183 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+  </div>
+
+  <!-- <header class="header_area header_three">
+    <div class="header_middel">
+      <div class="container-fluid">
+          <div class="middel_inner">
+              <div class="row align-items-center">
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="logo">
+                      <img src="assets/img/logo.png" alt="">
+                  </div>
+                </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h2 class="d-flex justify-content-center heading">Đăng kí tiểu thương của chợ</h2>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </header> -->
+    <app-header></app-header>
+
+
+		<div class="sign_up">
+      <h1>&bull; Đơn đăng kí tiểu thương &bull;</h1>
+			<form [formGroup]="form" (ngSubmit)="onSubmit()">
+				<div class="formtitle">Thông tin người đại diện</div>
+
+				<div class="top_section">
+
+					<div class="section">
+            <div class="row">
+              <div class="input-wrapper1">
+              <label>Tên người đại diện</label>
+              <input type="text" name="username" id="username" class="form__input" placeholder="Tên người đại diện"  formControlName="representativePerson">
+              <i class="fa fa-user bor" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger"  *ngIf="isSubmitted && formControls.representativePerson.errors?.required">Chưa điền tên người đại diện</div><br />
+            </div>
+					</div>
+
+					<div class="section">
+            <div class="row">
+              <div class="input-wrapper1">
+              <label>Ảnh CMND/CCCD mặt trước</label>
+              <input type="file" class="form__input" formControlName="imageICF" (change)="showPreviewICF($event)" accept="image/*" placeholder="Ảnh CMND/CCCD mặt trước">
+              <i class="fa fa-id-card-o" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger"  *ngIf="isSubmitted && formControls.imageICF.errors?.required">Chưa chọn ảnh CMND/CCCD mặt trước</div><br />
+            </div>
+					</div>
+
+					<div class="section">
+            <div class="row">
+              <div class="input-wrapper1">
+              <label>Ảnh CMND/CCCD mặt sau</label>
+              <input type="file" class="form__input" formControlName="imageICB" (change)="showPreviewICB($event)" accept="image/*">
+              <i class="fa fa-id-card-o" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger"  *ngIf="isSubmitted && formControls.imageICB.errors?.required">Chưa chọn ảnh CMND mặt sau</div><br />
+            </div>
+					</div>
+
+          <div class="section">
+            <div class="row">
+              <div class="input-wrapper1">
+              <label>Số CMND/CCCD</label>
+              <input  type="text" class="form__input"  formControlName="identityCard" placeholder="Số CMND/CCCD">
+              <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger"  *ngIf="isSubmitted && formControls.identityCard.errors?.required">hưa điền số CMND/CCCD</div><br />
+              <div class="text-danger" *ngIf="isSubmitted && formControls.identityCard.errors?.pattern">Phải là số</div>
+            </div>
+					</div>
+
+          <div class="section">
+            <div class="row">
+              <div class="input-wrapper1">
+              <label>Địa chỉ Email</label>
+              <input type="text" name="username" id="username" class="form__input" placeholder="Email"  formControlName="sellerEmail">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger"  *ngIf="isSubmitted && formControls.sellerEmail.errors?.required">Chưa điền địa chỉ Email</div><br />
+            </div>
+					</div>
+        <!-- </div>
+				<div class="bottom-section"> -->
+					<div class="formtitle">Thông tin cửa hàng</div>
+
+					<div class="section">
+              <div class="row">
+              <div class="input-wrapper1">
+              <label>Tên cửa hàng</label>
+              <input type="text" name="username" id="username" class="form__input" placeholder="Tên cửa hàng"  formControlName="brandName">
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </div>
+              <div class="text-danger"  *ngIf="isSubmitted && formControls.brandName.errors?.required">Chưa điền tên cửa hàng</div><br/>
+            </div>
+          </div>
+
+
+
+            <div class="section">
+              <div class="row">
+                <div class="input-wrapper1">
+                <label>Ảnh giấy phép kinh doanh</label>
+                <input type="file" class="form__input"  formControlName="imageBL" (change)="showPreviewBL($event)" accept="image/*">
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+              </div>
+                <div class="text-danger"  *ngIf="isSubmitted && formControls.imageBL.errors?.required">Chưa có ảnh giấy phép kinh đoanh</div><br />
+              </div>
+            </div>
+
+
+
+					<div class="section">
+            <div class="row">
+            <div class="input-wrapper1">
+            <label>Địa chỉ cửa hàng</label>
+            <input formControlName="address" class="form__input" (keyup)="autocomplete()" matInput type="text" [matAutocomplete]="auto" placeholder="Địa chỉ cửa hàng"/>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </div>
+            <mat-autocomplete #auto="matAutocomplete" >
+              <mat-option *ngFor="let item of filteredOptions" [value]="item.description">
+                {{item.description}}
+              </mat-option>
+            </mat-autocomplete>
+            <div class="text-danger">{{message}}</div>
+              <div  *ngIf="isSubmitted && formControls.address.errors?.required">Chưa điền địa chỉ cửa hàng</div><br/>
+          </div>
+        </div>
+
+        <div class="section">
+        <div class="row">
+          <div class="input-wrapper1">
+          <label>Thể loại mặt hàng</label>
+            <select formControlName="tradeGenre" class="form__input" >
+              <option value="" disabled >Chọn thể loại</option>
+              <option value="Thực phẩm ăn liền">Thực phẩm ăn liền</option>
+              <option value="Mỹ phẩm">Mỹ phẩm</option>
+              <option value="Rau củ quả">Rau củ quả</option>
+              <option value="Thịt,cá">Thịt,cá</option>
+              <option value="Gạo,bột">Gạo,bột</option>
+              <option value="Tạp hóa">Tạp hóa</option>
+              <option value="May mặc">May mặc</option>
+            </select>
+          <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </div>
+        <div class="text-danger" *ngIf="isSubmitted && formControls.tradeGenre.errors?.required">Chưa chọn thể loại mặt hàng</div>
+        </div>
+      </div>
+    <!-- </div> -->
+					<div class="formtitle">Đơn vị vận chuyển</div>
+					<div class="section">
+            <p class="radioP">
+              <input type="radio" name="checkTransport" id="r1" formControlName="checkTransport" value="true"/>
+              <label for="r1">
+                <span class="radioButtonGraph"></span>
+                Tiểu thương vận chuyển
+              </label>
+            </p>
+            <p class="radioP">
+              <input type="radio" name="checkTransport" id="r2" formControlName="checkTransport" value="false"/>
+              <label for="r2">
+                <span class="radioButtonGraph"></span>
+                Quận đoàn vận chuyển
+              </label>
+            </p>
+
+					</div>
+        </div>
+        <div class="btn-edit">
+      <button type="submit" class="button type1">Gửi đơn</button>
+      </div>
+			</form>
+
+		</div>

@@ -1,0 +1,86 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+  </div>
+
+
+<div class="sidenav">
+  <div class="text">
+    <h3>Tên người đại diện: {{Info.representativePerson}}</h3>
+    <p>Tên Cửa Hàng: {{Info.brandName}}</p>
+    <p>Số Điện Thoại: {{Info.phoneNumber}}</p>
+    <p>Gmail: {{Info.email}}</p>
+    <p>Địa chỉ: {{Info.address}}</p>
+    <p>Số chứng minh nhân dân: {{Info.identityCard}}</p>
+    <p>Thể loại kinh doanh: {{Info.tradeGenre}}</p>
+    <div *ngIf="Info.statusContract === 'Done'">
+    <p>Tình Trạng Đơn: Đã phê duyệt</p>
+    </div>
+    <div *ngIf="Info.statusContract === 'Reject'">
+    <p>Tình Trạng Đơn: Từ chối đơn</p>
+    </div>
+
+    <div *ngIf="Info.isTransport === true">
+      <p>Tiểu thương vận chuyển</p>
+    </div>
+    <div *ngIf="Info.isTransport === false">
+      <p>Quận đoàn vận chuyển</p>
+    </div>
+
+  </div>
+
+  <div class="images">
+      <h3 class="textImage">Ảnh Chứng Minh Nhân Dân Mặt Trước Và Sau</h3>
+      <div class="imageIC">
+    <img src="{{Info.imageICF}}" alt="" width="300" height="200">
+    <h4></h4>
+    <img src="{{Info.imageICB}}" alt="" width="300" height="200">
+  </div>
+      <h3 class="textImage">Ảnh Giấy Phép Kinh Doanh</h3>
+      <div class="imageBL">
+    <img src="{{Info.imageBL}}" alt="" width="300" height="200">
+      </div>
+  </div>
+
+  <div id="image-viewer">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="full-image">
+  </div>
+
+  <br>
+  <div class="text-danger message">{{message}}</div>
+  <br>
+  <div *ngIf="Info.statusContract === 'New'" >
+  <div class="edit">
+    <a  (click)="finishContract(Info.registerFormId)">
+   <svg width="66" height="66" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" id="icon-tick-yes">
+     <g stroke="#444" stroke-width="4">
+       <circle class="icon-bg" cx="49" cy="48" r="31" stroke-width="2" fill="#fff" />
+       <path class="line-bg2" d="M33 48L45.3701 60.3701L68.1838 37.5563" stroke="#ccc" />
+       <path class="icon-line line-in" d="M33 48L45.3701 60.3701L68.1838 37.5563" stroke="currentcolor" />
+     </g>
+   </svg>
+ </a>
+
+ <a  (click)="rejectContract(Info.registerFormId)">
+   <svg width="66" height="66" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" id="icon-cross-no">
+     <g  stroke="#444" stroke-width="4">
+       <circle cx="49" cy="48" r="31" stroke="#444" fill="#fff" stroke-width="2"/>
+       <g class="line-bg1">
+         <path d="M35.1811 33.9311L63.8189 62.5689" />
+         <path d="M63.8189 33.9311L35.1811 62.5689" />
+       </g>
+       <g stroke="currentcolor">
+         <path class="icon-line line-in line-1" d="M35.1811 33.9311L63.8189 62.5689" />
+         <path class="icon-line line-in line-2" d="M63.8189 33.9311L35.1811 62.5689" />
+       </g>
+     </g>
+   </svg>
+ </a>
+ </div>
+</div>
+
+</div>
+
+

@@ -1,0 +1,70 @@
+
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+<header class="header_area header_three">
+    <div class="header_middel">
+      <div class="container-fluid">
+          <div class="middel_inner">
+              <div class="row align-items-center">
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="logo">
+                      <img class="imageFPT" width="80px" height="80px" src="assets/img/quan1.png" alt="">
+                  </div>
+                </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h3 class="d-flex justify-content-center heading">Trang đăng nhập</h3>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                    <img class="imageFPT" width="130px" height="130px" src="assets/img/fpt.png" alt="">
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </header>
+
+
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" [formGroup]="form" (ngSubmit)="login()">
+        <h3>Chào mừng người quản lí</h3>
+				<div class="login__field">
+					<input type="text" class="login__input" formControlName="username" placeholder="Tên đăng nhập">
+          <i class="login__icon fa fa-user" ></i>
+				</div>
+				<div class="login__field">
+					<input matInput type="password" class="login__input" formControlName="password" placeholder="Mật khẩu" [type]="hide ? 'password' :'text'">
+          <i class="login__icon fa fa-lock" ></i>
+          <i class="material-icons errspan" matSuffix (click)="hide = !hide">
+            {{hide ? 'visibility':'visibility_off'}}
+          </i>
+				</div>
+
+        <h4 class="mb-4">{{valid}}</h4>
+				<button [disabled]="!form.valid" class="button login__submit">
+					<span class="button__text">Đăng nhập</span>
+					<i class="button__icon fa fa-chevron-right"></i>
+				</button>
+			</form>
+			<div class="social-login">
+				<h3></h3>
+				<div class="social-icons">
+					<a  class="social-login__icon fa fa-instagram"></a>
+					<a  class="social-login__icon fa fa-facebook"></a>
+					<a  class="social-login__icon fa fa-twitter"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>
+	</div>
+</div>
+

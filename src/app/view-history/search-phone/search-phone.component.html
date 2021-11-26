@@ -1,0 +1,23 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+  <app-header></app-header>
+
+  <div class="container">
+    <div class="text">
+          <div class="title-bill">Để xem "Đơn hàng của bạn" vui lòng</div>
+          <div class="title-bill">nhập số điện thoại đã đặt hàng</div>
+    </div>
+    <form class="form"  [formGroup]="form" (ngSubmit)="sendLoginCode()">
+      <i class="fa fa-mobile fa-3x icon" aria-hidden="true"></i>
+      <h1></h1>
+      <div class="input-wrapper1">
+        <input type="text" name="username" id="username" class="form__input" placeholder="Nhập số điện thoại" formControlName="phoneFilter"  autocomplete="off">
+        <img src="assets/img/coVN.png" />
+      </div>
+      <div class="recaptcha" id="recaptcha-container"></div>
+       <button [disabled]="!form.valid" type="submit" class="button type1">Tiếp tục</button>
+    </form>
+    </div>

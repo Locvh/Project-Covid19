@@ -1,0 +1,48 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+</div>
+      <form
+      class="needs-validation"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="row">
+        <div class="input-wrapper1">
+        <label>Tên sự kiện</label>
+        <input type="text" name="username" id="username" class="form__input"  placeholder="Tên sự kiện" formControlName="promotionTitle" >
+        <i class="fa fa-flag" aria-hidden="true"></i>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="input-wrapper1">
+        <label>Phần trăm</label>
+        <input type="text" name="username" id="username" class="form__input" placeholder="Phần trăm" formControlName="percentPRO" >
+        <i class="fa fa-percent" aria-hidden="true"></i>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="input-wrapper1">
+        <label>Thời gian bắt đầu</label>
+          <input matInput [matDatepicker]="pickerTo" name="username" id="username" class="form__input" formControlName="startPromotion" placeholder="Thời gian bắt đầu" disabled>
+          <mat-datepicker-toggle matSuffix [for]="pickerTo" ></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo disabled="false" ></mat-datepicker>
+      </div>
+      </div>
+
+      <div class="row">
+        <div class="input-wrapper1">
+        <label>Thời gian kết thúc</label>
+        <input matInput [matDatepicker]="pickerFrom" name="username" id="username" class="form__input" formControlName="endPromotion" placeholder="Thời gian kết thúc" disabled>
+        <mat-datepicker-toggle matSuffix [for]="pickerFrom" ></mat-datepicker-toggle>
+        <mat-datepicker #pickerFrom disabled="false" ></mat-datepicker>
+      </div>
+      </div>
+      <h3 class="text-danger title">{{message}}</h3>
+      <div class="btn-edit">
+        <button type="submit" class="button type1" >Cập nhật khuyến mãi</button>
+      </div>
+    </form>

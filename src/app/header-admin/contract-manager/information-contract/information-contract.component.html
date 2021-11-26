@@ -1,0 +1,47 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center">
+  <mat-progress-spinner class="spinner" color="primary"> </mat-progress-spinner>
+</div>
+<div class="sidenav">
+  <div class="text">
+
+    <h3>Tên người đại diện: {{Info.representativePerson}}</h3>
+    <p>Tên Cửa Hàng: {{Info.brandName}}</p>
+    <p>Số Điện Thoại: {{Info.phoneNumber}}</p>
+    <p>Gmail: {{Info.email}}</p>
+    <p>Địa chỉ: {{Info.address}}</p>
+    <p>Số chứng minh nhân dân: {{Info.identityCard}}</p>
+    <p>Thể loại kinh doanh: {{Info.tradeGenre}}</p>
+    <div *ngIf="Info.statusContract === 'Done'">
+    <p>Tình Trạng Đơn: Đã phê duyệt</p>
+    </div>
+    <div *ngIf="Info.statusContract === 'Reject'">
+    <p>Tình Trạng Đơn: Từ chối đơn</p>
+    </div>
+    <div *ngIf="Info.isTransport === true">
+      <p>Tiểu thương vận chuyển</p>
+    </div>
+    <div *ngIf="Info.isTransport === false">
+      <p>Quận đoàn vận chuyển</p>
+    </div>
+  </div>
+  <div class="images">
+    <h3 class="textImage">Ảnh Chứng Minh Nhân Dân Mặt Trước Và Sau</h3>
+    <div class="imageIC">
+  <img src="{{Info.imageICF}}" alt="" width="300" height="200">
+  <h4></h4>
+  <img src="{{Info.imageICB}}" alt="" width="300" height="200">
+</div>
+    <h3 class="textImage">Ảnh Giấy Phép Kinh Doanh</h3>
+    <div class="imageBL">
+  <img src="{{Info.imageBL}}" alt="" width="300" height="200">
+    </div>
+</div>
+
+<div id="image-viewer">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="full-image">
+</div>
+
+</div>
+
+
