@@ -4,8 +4,6 @@
   </mat-progress-spinner>
 </div>
 
-
-
 <div class="container">
 <app-header></app-header>
 
@@ -49,7 +47,6 @@ orientation="ltr"
 
 
 <div class="col-lg-3 col-md-12">
-
   <div class="sidebar_widget">
     <div class="widget_list widget_categories">
         <h2>Danh mục sản phẩm</h2>
@@ -64,7 +61,6 @@ orientation="ltr"
             <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value8]">Rau, củ, trái cây<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
             <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value9]">Thịt, cá, hải sản<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
             <li><a style="text-decoration: none" [routerLink]="['/view-list-seller',value10]">Gia vị<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span></a> </li>
-
         </ul>
     </div>
 </div>
@@ -73,7 +69,6 @@ orientation="ltr"
   <div class="quandoan">
     <img src="assets/img/Quandoan1.png" />
   </div>
-
   <h1 align="center">Quận 1</h1>
   <div align="center" class="text">
     <h4>Sản phẩm trí tuệ của Quận Đoàn 1</h4>
@@ -123,11 +118,9 @@ orientation="ltr"
               <span class="price">{{ dataPro.unitPrice.toLocaleString() }} VND</span>
             </div>
 
-
           </div>
             <div class="wcf-right"><a (click)="addtocart(dataPro)" class="buy-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></div>
           </div>
-
 
         </div>
       </div>

@@ -78,14 +78,13 @@ export class FinishContractComponent implements OnInit,OnDestroy  {
 
   updateIsTransportContract(item:string,isAvaible:boolean){
     const updateObject = {
-      registerFormId :  item,
+      sellerId :  item,
       isTransport : isAvaible
      }
 
      this.registerFormEvent=this.service.updateTransport(updateObject).subscribe(res=>{
-      //  console.log(res);
       localStorage.setItem('jwt',res);
-            this.nextPage();
+      this.nextPage();
     },
     (error) => console.error(error)
     );
@@ -95,17 +94,5 @@ export class FinishContractComponent implements OnInit,OnDestroy  {
     this.router.navigate(['/contract-manager'], { queryParams: { pageNumber: this.pageNumber} });
     this.pageNevigation();
   }
-
-  // updateIsAvaiableProduct(item:string,isAvaible:boolean){
-  //   const updateObject = {
-  //       productId: item,
-  //       isAvaible : isAvaible
-  //       };
-  //     this.productEvent=this.service.updateIsAvaiableProduct(updateObject).subscribe(res=>{
-  //       this.nextPage();
-  //     },
-  //     (error) => console.error(error)
-  //     );
-  // }
 
 }

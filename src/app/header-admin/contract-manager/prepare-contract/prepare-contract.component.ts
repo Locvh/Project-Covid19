@@ -67,29 +67,6 @@ export class PrepareContractComponent implements OnInit, OnDestroy  {
     this.router.navigate(['/header-admin']);
   }
 
-  // finishContract(registerFormId: string) {
-  //   const updateObject = {
-  //     registerFormId: registerFormId,
-  //     statusContract: 'Done',
-  //   };
-  //   this.contractEvent = this.service.updateContractStatus(updateObject).subscribe(res => {
-  //     this.ActivateEditPromotion=false;
-  //     this.pageNevigation();
-  //   });
-
-  // }
-
-  // rejectContract(registerFormId: string) {
-  //   const updateObject = {
-  //     registerFormId: registerFormId,
-  //     statusContract: 'Reject',
-  //   };
-  //   this.contractEvent = this.service.updateContractStatus(updateObject).subscribe(res => {
-  //     this.ActivateEditPromotion=false;
-  //     this.pageNevigation();
-  //   });
-  // }
-
   addClick2(item:any) {
     this.registerFormId=item;
     this.ActivateEditPromotion=true;

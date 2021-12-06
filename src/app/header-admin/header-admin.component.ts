@@ -16,6 +16,10 @@ export class HeaderAdminComponent implements OnInit,OnDestroy {
 
   ExcelFileName: string | undefined;
 
+  message: string | undefined ;
+
+  fileName:string;
+
   productEvent :Subscription =new Subscription();
 
   constructor(private service: SharedService, private router: Router,private checklogin:LoginService) { }
@@ -54,62 +58,10 @@ export class HeaderAdminComponent implements OnInit,OnDestroy {
   }
 
 
-  message: string | undefined ;
-
-  fileName:string;
-
-
 
   ngOnDestroy(){
     this.productEvent.unsubscribe();
   }
-
-  // onFileChangeMarket(event :any){
-
-  //   var file=event.target.files[0];
-  //   const formData: FormData=new FormData();
-  //   formData.append('',file,file.name);
-
-  //   this.productEvent=this.service.uploadExcelMarket(formData).subscribe((data:any)=>{
-  //     this.ExcelFileName=data.toString();
-  //     alert(data.toString());
-  //   })
-  // }
-
-  // onFileChangeHotel(event :any){
-
-  //   var file=event.target.files[0];
-  //   const formData: FormData=new FormData();
-  //   formData.append('',file,file.name);
-
-  //   this.productEvent=this.service.uploadExcelHotel(formData).subscribe((data:any)=>{
-  //     this.ExcelFileName=data.toString();
-  //     alert(data.toString());
-  //   })
-  // }
-
-  // onFileChangeHouse(event :any){
-
-  //   var file=event.target.files[0];
-  //   const formData: FormData=new FormData();
-  //   formData.append('',file,file.name);
-
-  //   this.productEvent=this.service.uploadExcelHouse(formData).subscribe((data:any)=>{
-  //     this.ExcelFileName=data.toString();
-  //     alert(data.toString());
-  //   })
-  // }
-
-  // onFileChangeProduct(event :any){
-  //   var file=event.target.files[0];
-  //   const formData: FormData=new FormData();
-  //   formData.append('',file,file.name);
-
-  //   this.productEvent=this.service.uploadExcelProduct(formData).subscribe((data:any)=>{
-  //     this.ExcelFileName=data.toString();
-  //     alert(data.toString());
-  //   })
-  // }
 
 
   logOut(){

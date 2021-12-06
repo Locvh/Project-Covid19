@@ -115,6 +115,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ShowProductsComponent } from './seller/show-product/show-products/show-products.component';
+import { AuthorizedStoreComponent } from './header-admin/authorized-store/authorized-store.component';
 
 
 
@@ -211,6 +213,8 @@ export function tokenGetter(){
     CodeOtpCustomerComponent,
     FeedbackAdminComponent,
     FeedbackSellerComponent,
+    ShowProductsComponent,
+    AuthorizedStoreComponent,
 
 
   ],

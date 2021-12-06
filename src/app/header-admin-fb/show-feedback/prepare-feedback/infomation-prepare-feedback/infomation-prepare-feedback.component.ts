@@ -18,7 +18,6 @@ export class InfomationPrepareFeedbackComponent implements OnInit, OnDestroy {
   loading$ = this.loader.loading$;
   constructor(public loader: LoadingService,private service: SharedService, private route: ActivatedRoute, private router: Router, private location: Location) { }
   Info: any = [];
-  // feedbackId: string;
   registerForm = new RegisterForm();
 
   @Input() feedbackId: any;
@@ -61,7 +60,7 @@ export class InfomationPrepareFeedbackComponent implements OnInit, OnDestroy {
     var update = {
       orderId: orderId,
       descriptionAdmin:this.form.value.descriptionAdmin,
-      statusOrder:'Done',
+      statusOrder:'Finish',
     };
     this.feedbackIdEvent=this.service.updateBillStatus(update).subscribe(res => {
     });
@@ -76,7 +75,6 @@ export class InfomationPrepareFeedbackComponent implements OnInit, OnDestroy {
     };
     this.feedbackIdEvent = this.service.updateFeedbackStatus(updateObject).subscribe(res => {
       this.showFeedback();
-      // this.router.navigate(['/show-feedback']);
       this.message="Đã gửi phản hồi đến cho tiểu thương";
     });
   }

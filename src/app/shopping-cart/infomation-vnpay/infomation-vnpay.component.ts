@@ -1,7 +1,7 @@
 import { Component, OnInit ,OnDestroy } from '@angular/core';
 import { SharedService } from 'src/app/service/shared.service';
-import { BillInfo } from '../class/bill-info';
-import { Bill } from '../class/bill';
+// import { BillInfo } from '../class/bill-info';
+// import { Bill } from '../class/bill';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -23,11 +23,11 @@ export class InfomationVnpayComponent implements OnInit ,OnDestroy {
   user: any;
 
 
-  bill = new Bill();
+  // bill = new Bill();
 
-  billInfo = new BillInfo();
+  // billInfo = new BillInfo();
 
-  billList:  BillInfo[]=[];
+  // billList:  BillInfo[]=[];
 
 
   billEvent:Subscription = new Subscription();

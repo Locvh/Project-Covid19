@@ -13,16 +13,21 @@ export class SellerComponent implements OnInit {
   shopname:string;
 
   isTransport:string;
+  imageSeller:string;
 
 
   constructor( private router: Router,private checklogin:LoginService,private jwtHeplper: JwtHelperService) { }
 
   ngOnInit(): void {
-    this.shopname =localStorage.getItem("name");
     const token=localStorage.getItem("jwt");
     const decodedToken = this.jwtHeplper.decodeToken(token);
+    localStorage.setItem('name',decodedToken.shopName);
+    localStorage.setItem('sellerId',decodedToken.sellerId);
     localStorage.setItem('isTransport',decodedToken.isTransport);
+    localStorage.setItem('imageSeller',decodedToken.imageSeller);
+    this.imageSeller=localStorage.getItem("imageSeller");
     this.isTransport=localStorage.getItem("isTransport");
+    this.shopname =localStorage.getItem("name");
   }
 
   logOut(){

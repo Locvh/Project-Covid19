@@ -34,6 +34,7 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
   imageCMNDUrlFont: string;
   imageBusinessLicense: string;
   imageUrlFirebase:string;
+
   sellerEvent:Subscription = new Subscription();
 
   windowRef: any;
@@ -42,8 +43,6 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
   verificationCode: string;
 
   user: any;
-
-  nextClicked = false;
 
   result:string;
 
@@ -67,10 +66,12 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
 
   message:string;
 
+  message1:string;
+
   form = new FormGroup({
     representativePerson: new FormControl('', [Validators.required]),
     brandName: new FormControl('', [Validators.required ]),
-    sellerEmail: new FormControl('', [Validators.required]),
+    // sellerEmail: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     tradeGenre: new FormControl('', [Validators.required]),
     identityCard: new FormControl('', [Validators.required,Validators.pattern('^[0-9]*$')]),
@@ -80,8 +81,6 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
     verificationCode: new FormControl('',[Validators.required]),
     checkTransport: new FormControl('true', [Validators.required])
   });
-
-
 
   ngOnInit(): void {
     this.firebaseChecking();
@@ -100,12 +99,11 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
     this.userDataPhone=this.userData.replace('+84','0');
     var val = {
       representativePerson: this.form.value.representativePerson,
-      brandName: this.form.value.brandName,
-      phoneNumber: this.userDataPhone,
-      email: this.form.value.sellerEmail,
-      address: this.form.value.address,
-      identityCard: this.form.value.identityCard,
+      shopName: this.form.value.brandName,
+      addressShop: this.form.value.address,
+      phoneSeller: this.userDataPhone,
       tradeGenre: this.form.value.tradeGenre,
+      identityCard: this.form.value.identityCard,
       imageICB: this.imageCMNDUrlBack,
       imageBL: this.imageBusinessLicense,
       imageICF: this.imageCMNDUrlFont,
@@ -113,29 +111,38 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
     };
 
     var a1= this.form.value.address;
-    if(a1.substr(a1.length - 19)=='Quận 1, Hồ Chí Minh'){
+
     if (
       this.form.value.representativePerson != '' &&
-      this.form.value.brandNamen != '' &&
+      this.form.value.brandName != '' &&
       this.form.value.identityCard > 0 &&
-      this.form.value.sellerEmail != '' &&
       this.form.value.address != ''&&
       this.form.value.tradeGenre != ''&&
       this.imageCMNDUrlBack != ''&&
       this.imageBusinessLicense != ''&&
       this.imageCMNDUrlFont != ''
     ) {
+  if(a1.substr(a1.length - 19)=='Quận 1, Hồ Chí Minh'){
     this.sellerEvent=this.service.addContract(val).subscribe(res => {
       localStorage.removeItem("_grecaptcha");
       localStorage.removeItem("user_data");
       localStorage.removeItem("verificationId");
       this.router.navigate(['/success-registration']);
-    });
-  }}else{
-    this.message='Thành thật xin lỗi chúng tôi chỉ phục vụ cho tiểu thương quận 1';
+    },
+    (error) => {
+      this.message=error.error;
+    }
+    );
+  }
+  else{
+    this.message1='Thành thật xin lỗi chúng tôi chỉ phục vụ cho tiểu thương quận 1';
   }
 
+}
+
   }
+
+
   ngOnDestroy(){
     this.sellerEvent.unsubscribe();
   }
@@ -225,7 +232,7 @@ export class SellerRegistrationComponent implements OnInit,OnDestroy {
 
     this.service.autocomplete(this.api_key,this.locationAddress,this.input).subscribe(data => {
       this.filteredOptions=data.predictions;
-    })
+    });
 }
 
    resetForm() {

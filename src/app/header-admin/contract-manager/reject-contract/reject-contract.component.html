@@ -55,11 +55,11 @@
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.dayRegister}}</td>
     <td>{{dataItem.phoneNumber}}</td>
-    <td>  <div  *ngIf="dataItem.statusContract === 'Reject'">
+    <td>  <div  *ngIf="dataItem.statusSeller === 'Reject'">
       <span class="text-primary"><strong>Đơn bị từ chối</strong></span>
     </div></td>
 
-    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.registerFormId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.sellerId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
     </tr>
 </tbody>
 </table>

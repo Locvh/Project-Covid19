@@ -5,7 +5,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { ConfirmService } from 'src/app/service/confirm.service';
 import { LoadingService } from 'src/app/service/loading.service';
 import { SharedService } from 'src/app/service/shared.service';
-import { BillInfo } from '../class/bill-info';
+import { BillInfo } from 'src/app/model/bill-info';
 
 @Component({
   selector: 'app-cofirm-infomation',
@@ -29,6 +29,7 @@ export class CofirmInfomationComponent implements OnInit ,OnDestroy {
   totalShip:number;
 
   loading$ = this.loader.loading$;
+
   constructor(public loader: LoadingService,private service: SharedService,private confirmService: ConfirmService, private cartService:CartService,private router: Router) { }
 
   info:any;
@@ -72,8 +73,8 @@ export class CofirmInfomationComponent implements OnInit ,OnDestroy {
 
 submit(){
    for(var e of this.cartService.CartItemList){
-       this.billList.push({productId:e.productId,priceProduct:e.promotionPrice,quantity:e.quantity,subTotal:e.promotionPrice*e.quantity});
-        }
+       this.billList.push({productId:e.productId,priceProduct:e.promotionPrice,quantity:e.quantity,subTotal:e.promotionPrice*e.quantity,originalPrice:e.unitPrice});
+   }
 
     var val = {
       environment: "web",
@@ -96,6 +97,8 @@ submit(){
           this.router.navigate(['/cash-return']);
         }
     });
+
+
 }
 
 resetForm(){

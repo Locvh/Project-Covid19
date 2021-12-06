@@ -15,8 +15,8 @@ export class LoginService {
   getRole(){
     const token=localStorage.getItem("jwt");
     const decodedToken = this.jwtHeplper.decodeToken(token);
-    localStorage.setItem('name',decodedToken.shopName);
-    localStorage.setItem('sellerId',decodedToken.sellerId);
+    // localStorage.setItem('name',decodedToken.shopName);
+    // localStorage.setItem('sellerId',decodedToken.sellerId);
     // localStorage.setItem('isTransport',decodedToken.isTransport);
       if(decodedToken.role=="ADMIN"){
 

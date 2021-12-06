@@ -45,10 +45,11 @@ export class InformationPrepareComponent implements OnInit , OnDestroy {
 
   rejectContract(registerFormId: string) {
     const updateObject = {
-      registerFormId: registerFormId,
-      statusContract: 'Reject',
+      sellerId: registerFormId,
+      status: 'Reject',
     };
     this.registerFormInfoEvent = this.service.updateContractStatus(updateObject).subscribe(res => {
+      // registerForm/updateRegisterFormStatus
       this.showContract();
       this.message='Đơn đã bị từ chối';
     });
@@ -57,8 +58,8 @@ export class InformationPrepareComponent implements OnInit , OnDestroy {
 
   finishContract(registerFormId: string) {
     const updateObject = {
-      registerFormId: registerFormId,
-      statusContract: 'Done',
+      sellerId: registerFormId,
+      status: 'Done',
     };
     this.registerFormInfoEvent = this.service.updateContractStatus(updateObject).subscribe(res => {
       this.showContract();

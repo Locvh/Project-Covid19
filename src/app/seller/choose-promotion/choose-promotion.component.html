@@ -28,16 +28,17 @@
         </form>
 
       <div id="container">
-      <ul>
-        <li *ngFor="let hero of productOfPromotion | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+        <!-- | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total2 } -->
+      <ul *ngFor="let hero of productOfPromotion ">
+        <li >
           <span (click)="deleteProductOfPromotion(hero.productId)"><i class="fa fa-trash"></i></span> {{hero.productName}}
         </li>
-
       </ul>
+      <!-- <div class="page">
+        <pagination-controls (pageChange)="pageNumber = $event" (click)="nextPage()"  align="center"></pagination-controls>
+        </div> -->
     </div>
 
-      <div class="page">
-        <pagination-controls (pageChange)="pageNumber = $event" (click)="getProductOfPromotion()"  align="center"></pagination-controls>
-        </div>
+
       </div>
 

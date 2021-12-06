@@ -24,8 +24,6 @@ export class ViewHistoryDetailComponent implements OnInit,OnDestroy {
 
   constructor(public loader: LoadingService,private service: SharedService,private route: ActivatedRoute, private router: Router) { }
 
-  // orderId: string ;
-
   totalPrice: string ;
   totalQuantity: string ;
   dateBuy: string ;
@@ -42,6 +40,7 @@ export class ViewHistoryDetailComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     // this.orderId=this.route.snapshot.params["orderId"];
     this.billInfoEvent=this.service.getBillInfor(this.orderId).subscribe(data=>{
+      console.log(data);
       this.orderID=data[0].orderDetailId;
       this.billInfo=data;
     });

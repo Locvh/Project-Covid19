@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .container .search-input{
@@ -269,7 +269,7 @@
   position: relative;
   width: 450px;
   padding: 30px 50px;
-  margin: 40px auto;
+  margin: 20px auto;
   background:#ffffffec;
   text-align: center;
 }

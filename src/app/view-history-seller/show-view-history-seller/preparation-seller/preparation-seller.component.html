@@ -55,6 +55,8 @@
   </div>
 </div>
 
+
+
 <div class="row">
   <div class="col-md-12">
     <!-- <a class="logout" (click)="toBack()" ><i class="fa fa-sign-out" aria-hidden="true"></i>Trở về trang chủ</a> -->
@@ -75,6 +77,12 @@
     <table class="table">
 <thead>
   <tr>
+    <th *ngIf="isTransport == 'True'">
+    <a class="icon-yes2"
+    (click)="save()" data-target="#login3" data-toggle="modal">
+    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+    </a>
+  </th>
     <th>STT</th>
     <th>Ngày mua</th>
     <th>Tổng số tiền(VND)</th>
@@ -85,6 +93,9 @@
 </thead>
 <tbody>
   <tr  *ngFor="let dataItem of bills | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td *ngIf="isTransport == 'True'"><input type="checkbox" class="cb-order"
+      (change)="onChange($event.target.checked, dataItem.order.orderId)"  [checked]="checked(dataItem.order.orderId)">
+    </td>
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.order.dayBuy}}</td>
     <td>{{dataItem.order.totalPrice.toLocaleString()}} </td>
@@ -110,6 +121,7 @@
     </td>
         <!-- [routerLink]="['/view-history-detail-seller',dataItem.order.orderId]" -->
     <td ><a class="name_info" data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.order.orderId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+
     </tr>
 </tbody>
 </table>

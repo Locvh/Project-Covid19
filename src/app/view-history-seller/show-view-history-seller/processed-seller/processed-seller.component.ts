@@ -14,6 +14,10 @@ export class ProcessedSellerComponent implements OnInit,OnDestroy{
 
     bills: any = [];
 
+    selected: any = [];
+
+    messages: any = [];
+
     billFilter: string ='';
 
     total: number ;
@@ -40,6 +44,32 @@ export class ProcessedSellerComponent implements OnInit,OnDestroy{
       this.nextPage();
       this.isTransport=localStorage.getItem("isTransport");
     }
+
+    checked(item){
+      if(this.selected.indexOf(item) != -1){
+        return true;
+      }
+    }
+
+    onChange(checked, item){
+      if(checked){
+      this.selected.push(item);
+      } else {
+        this.selected.splice(this.selected.indexOf(item), 1)
+      }
+    }
+
+    save(){
+      this.messages.push(this.selected);
+      const updateObject = {
+        listOrderId: [...this.messages[0]],
+        statusOrder: 'Done',
+      };
+      this.billEvent=this.service.updateBillStatusList(updateObject).subscribe(()=>{
+        this.nextPage();
+      });
+    }
+
 
     nextPage() {
       this.router.navigate(['/view-history-seller'], { queryParams: { pageNumber: this.pageNumber} });

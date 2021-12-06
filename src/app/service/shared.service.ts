@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { getProduct } from '../model/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  // readonly APIUrl='https://webcovid.azurewebsites.net/api/';
-  // readonly APIUrlNew='https://covidmarketcommunity.azurewebsites.net/api/';
   readonly APIUrlNew='http://communitycovidmarket.azurewebsites.net/api/';
   readonly APIUrlGoong='https://rsapi.goong.io/Place/AutoComplete';
 
@@ -41,9 +39,9 @@ sellerNearBy(location: string) {
 
 //--------------Product----------------
 
-searchProductbySellerID(productName:string, sellerId:string,pageSize: number, pageNumber:number) {
+searchProductbySellerID(productName:string, sellerId:string,pageSize: number, pageNumber:number):Observable<getProduct[]> {
   let params = new HttpParams().set("productName",productName).set("sellerId",sellerId).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
-  return this.http.get<any>(this.APIUrlNew + "product/getProductBySellerId", { params: params })
+  return this.http.get<getProduct[]>(this.APIUrlNew + "product/getProductBySellerId", { params: params })
 }
 
 
@@ -54,18 +52,18 @@ searchProductbySellerIDHaveIsavaible(productName:string, sellerId:string,pageSiz
 
 
 
-getTopProduct():Observable<any[]> {
-  return this.http.get<any>(this.APIUrlNew + "product/getTopProduct")
+getTopProduct():Observable<getProduct[]> {
+  return this.http.get<getProduct[]>(this.APIUrlNew + "product/getTopProduct")
 }
 
-getTopProductSales():Observable<any[]> {
-  return this.http.get<any>(this.APIUrlNew + "product/getTopProductWithPromotion")
+getTopProductSales():Observable<getProduct[]> {
+  return this.http.get<getProduct[]>(this.APIUrlNew + "product/getTopProductWithPromotion")
 }
 
 
 //------------Contract----------------
 searchContractPages(status:string,phone:string,pageSize: number, pageNumber:number) {
-  let params = new HttpParams().set("status",status).set("search",phone).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
+  let params = new HttpParams().set("status",status).set("phoneNumber",phone).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
   return this.http.get<any>(this.APIUrlNew + "registerForm/getAllRegisterFormWithPageSize", { params: params })
 }
 
@@ -73,14 +71,13 @@ updateTransport(val:any) {
   return this.http.post<any>(this.APIUrlNew + "seller/updateTransportSeller",val);
 }
 
-
 getInfoContract(registerFormId: string) {
-  let params = new HttpParams().set("registerFormId",registerFormId);
-  return this.http.get<any>(this.APIUrlNew + "registerForm/getRegisterFormByID", { params: params })
+  let params = new HttpParams().set("sellerId",registerFormId);
+  return this.http.get<any>(this.APIUrlNew + "registerForm/getSellerById", { params: params });
 }
 
  updateContractStatus(val: any): Observable<any[]> {
-  return this.http.post<any>(this.APIUrlNew + 'registerForm/updateRegisterFormStatus', val);
+  return this.http.post<any>(this.APIUrlNew + 'registerForm/updateSellerStatus', val);
 }
 
 
@@ -107,9 +104,9 @@ updateProduct(val:any){
     return this.http.post<any>(this.APIUrlNew + "product/deleteProductByProductId",val);
   }
 
-  getProductId(productId:string) {
+  getProductId(productId:string):Observable<getProduct> {
     let params = new HttpParams().set("productId",productId);
-    return this.http.get<any>(this.APIUrlNew + "product/GetProductByProductId", { params: params })
+    return this.http.get<getProduct>(this.APIUrlNew + "product/GetProductByProductId", { params: params })
   }
 //---------------Add order ---------------------------
   addOrder(val:any){
@@ -178,6 +175,9 @@ updateSeller(val:any){
  updateBillStatus(val: any): Observable<any[]> {
   return this.http.post<any>(this.APIUrlNew + 'order/updateOrderStatus', val);
 }
+ updateBillStatusList(val: any): Observable<any[]> {
+  return this.http.post<any>(this.APIUrlNew + 'order/updateListOrderStatus', val);
+}
 
 //--------------export file -------------------
 saveFileProcess(startDate:string,endDate:string) {
@@ -220,8 +220,8 @@ getProductNoPromotion(sellerId:string) {
 }
 
 
-getProductOfPromotion(sellerId:string,promotionId:string,pageSize: number, pageNumber:number) {
-  let params = new HttpParams().set("sellerId",sellerId).set("promotionId",promotionId).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
+getProductOfPromotion(sellerId:string,promotionId:string) {
+  let params = new HttpParams().set("sellerId",sellerId).set("promotionId",promotionId);
   return this.http.get<any>(this.APIUrlNew + "product/getProductNameByPromotionIdAndSellerId", { params: params })
 }
 
@@ -262,6 +262,7 @@ getFeedbackID(feedbackId:string) {
   let params = new HttpParams().set("feedbackId",feedbackId);
   return this.http.get<any>(this.APIUrlNew + "feedback/getFeedbackByFeedbackId", { params: params })
 }
+
 updateFeedbackStatus(val: any): Observable<any[]> {
   return this.http.post<any>(this.APIUrlNew + 'feedback/updateStatusFeedbackByFeedbackId', val);
 }
@@ -291,68 +292,12 @@ getInfectedById(Id: string) {
   return this.http.get<any>(this.APIUrlNew + "Infected/getInfectByID", { params: params })
 }
 
-
-
-//   uploadExcelMarket(val:any){
-//     return this.http.post<any>(this.APIUrl+'excel/readMaket',val);
-//   }
-
-//   uploadExcelHotel(val:any){
-//     return this.http.post<any>(this.APIUrl+'excel/readHotel',val);
-//   }
-
-
-//   uploadExcelProduct(val:any){
-//     return this.http.post<any>(this.APIUrl+'excel/readProduct',val);
-//   }
-
-//   uploadExcelHouse(val:any){
-//     return this.http.post<any>(this.APIUrl+'excel/readHouse',val);
-//   }
-
-//   getAllMarket():Observable<any[]>{
-//     return this.http.get<any>(this.APIUrl+'maket/getAllMaket');
-//   }
-
-//   getAllHotel():Observable<any[]>{
-//     return this.http.get<any>(this.APIUrl+'hotel/getAllHotel');
-//   }
-
-//   getAllHouse():Observable<any[]>{
-//     return this.http.get<any>(this.APIUrl+'house/getAllHouse');
-//   }
-
-
-//   exportFile(status: string) {
-//     let params = new HttpParams().set("status",status);
-//     return this.http.get<any>(this.APIUrl + "excel/ExportData",{ params: params})
-//   }
-
-
-//   updateHouse(val: any): Observable<any[]> {
-//     return this.http.put<any>(this.APIUrl + 'house/updateHouse', val);
-//   }
-
-//   deleteHouse(houseID: string) {
-//     let params = new HttpParams().set("houseID",houseID);
-//     return this.http.delete<any>(this.APIUrl + "house/deleteHouse", { params: params })
-//   }
-//   searchHousePage(address: string,pageSize: number, pageNumber:number) {
-//     let params = new HttpParams().set("address",address).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
-//     return this.http.get<any>(this.APIUrl + "house/searchHouseByAddressWithPage", { params: params })
-//   }
-
-//   updateProductPrice(val: any): Observable<any[]> {
-//     return this.http.put<any>(this.APIUrl + 'food/updateFoodPrice', val);
-//   }
-// //-------------Infected------------
-// getAllInfected(nameWard:string,pageSize: number, pageNumber:number) {
-//   let params = new HttpParams().set("search",nameWard).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
-//   return this.http.get<any>(this.APIUrl + "Infected/getAllInfectByPageSizeAndpageNumber", { params: params })
-// }
-
-// updateamountInfected(val: any): Observable<any[]> {
-//   return this.http.put<any>(this.APIUrl + 'Infected/UpdateInfect', val);
-// }
-
+//-----------------------export file excel-------------------
+searchSellerauthorityPages(shopName:string,pageSize: number, pageNumber:number) {
+  let params = new HttpParams().set("shopName",shopName).set("pageSize",JSON.stringify(pageSize)).set("pageNumber", JSON.stringify(pageNumber));
+  return this.http.get<any>(this.APIUrlNew + "seller/getSellerByTransport", { params: params })
+}
+addProductByExcel(val:any){
+  return this.http.post<any>(this.APIUrlNew +'excel/readProductByAdmin',val);
+}
 }

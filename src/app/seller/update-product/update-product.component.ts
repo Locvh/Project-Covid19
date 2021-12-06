@@ -107,7 +107,11 @@ export class UpdateProductComponent implements OnInit ,OnDestroy {
        };
     this.productEvent=this.service.updateProduct(val).subscribe(res => {
       this.message="Cập nhập sản phẩm thành công";
-    });
+    },
+    (error) => {
+      this.message=error.error;
+    }
+    );
   }
 
 

@@ -64,12 +64,14 @@ import { PhoneNumberCustomerComponent } from './shopping-cart/phone-number-custo
 import { CodeOtpCustomerComponent } from './shopping-cart/code-otp-customer/code-otp-customer.component';
 import { PhoneNumberSellerComponent } from './seller/phone-number-seller/phone-number-seller.component';
 import { CodeOtpSellerComponent } from './seller/code-otp-seller/code-otp-seller.component';
+import { AuthorizedStoreComponent } from './header-admin/authorized-store/authorized-store.component';
 
 
 
 
 
 const appRoutes : Routes = [
+  {path:'manager-store', component: AuthorizedStoreComponent},
   {path:'map', component: MapComponent},
   {path:'', component: SearchSellerComponent},
   {path:'update-ward', component: UpdateWardComponent},
@@ -115,7 +117,7 @@ const appRoutes : Routes = [
   {path:'update-information', component:UpdateSellerComponent,canActivate: [AuthGuard]},
   {path:'change-password', component:ChangePasswordComponent,canActivate: [AuthGuard]},
   {path:'add-promotion', component:AddPromotionComponent},
-  {path:'choose-promotion/:productId', component:ChoosePromotionComponent},
+  {path:'choose-promotion', component:ChoosePromotionComponent},
   {path:'show-promotion', component:ShowPromotionComponent,canActivate: [AuthGuard]},
   {path:'show-feedback-seller', component:ShowFeedbackSellerComponent,canActivate: [AuthGuard]},
   {path:'show-feedback', component:ShowFeedbackComponent,canActivate: [AuthGuard]},

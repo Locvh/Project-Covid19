@@ -57,11 +57,18 @@
       </div>
       <div class="itemRow" *ngFor="let dataBillInfo of billInfo let i=index">
         <div class="itemNo">{{i+1}}</div>
-        <div class="itemColor">{{dataBillInfo.productName}}</div>
-        <div class="itemData1">{{dataBillInfo.priceProduct.toLocaleString()}}</div>
+        <div class="itemName">{{dataBillInfo.productName}}</div>
+        <div class="itemData1">
+          {{dataBillInfo.priceProduct.toLocaleString()}}
+          <div *ngIf="dataBillInfo.priceProduct != dataBillInfo.originalPrice"><div>
+          Giá gốc: {{dataBillInfo.originalPrice.toLocaleString()}}
+        </div>
+        </div>
+        </div>
         <div class="itemData2">{{dataBillInfo.quantity}}</div>
         <div class="itemData3"> {{dataBillInfo.subTotal.toLocaleString()}}</div>
         <br>
+        <hr>
       </div>
 
   </div>
@@ -73,7 +80,7 @@
     <div class="totals">
       <div class="section">
         <div class="row">
-          <div class="col2">Tổng số lượng</div>
+          <div class="col2">Tổng số lượng (món):</div>
           <div class="col3">{{totalQuantity}}</div>
         </div>
         <div class="row">

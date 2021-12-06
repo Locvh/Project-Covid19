@@ -5,6 +5,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { LoadingService } from 'src/app/service/loading.service';
 import { SharedService } from 'src/app/service/shared.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { getProduct } from 'src/app/model/product.model';
 @Component({
   selector: 'app-show-shopping-detail',
   templateUrl: './show-shopping-detail.component.html',
@@ -13,25 +14,20 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class ShowShoppingDetailComponent implements OnInit,OnDestroy  {
 
   loading$ = this.loader.loading$;
+
   constructor(public loader: LoadingService,private service: SharedService,private route: ActivatedRoute,private cartService: CartService) { }
 
   productEvent:Subscription = new Subscription();
 
   productId:string;
 
-
-  product: any = [];
-
-  productTopSales: any = [];
+  product = new getProduct;
 
   ngOnInit(): void {
     this.productId=this.route.snapshot.params["productId"];
     this.productEvent=this.service.getProductId(this.productId).subscribe(res=> {
       this.product=res;
-      Object.assign(res,{quantity:1,total:res.unitPrice});
     });
-
-
 }
 
 addtocart(){

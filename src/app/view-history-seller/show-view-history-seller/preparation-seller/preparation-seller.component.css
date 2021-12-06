@@ -170,6 +170,11 @@
   margin-bottom: 20px;
 }
 
+.icon-yes2{
+  color: #43e97b;
+  font-size: 20px;
+}
+
 .icon-yes{
   color: #43e97b;
   margin-right: 30px;
@@ -229,4 +234,19 @@
 
 
 
+
+/* -------------------------------------------------------- */
+.cb-order{
+  margin-top: 1.8px;
+  border-radius: 0.2em;
+  width: 1.2em;
+  height: 1.2em;
+}
+.sub-order {
+  display:none;
+}
+
+.cb-order:checked ~ .sub-order {
+  display:block;
+}
 

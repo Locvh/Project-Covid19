@@ -49,7 +49,7 @@
     <th>Số điện thoại</th>
     <th>Trạng thái</th>
     <th>Đơn vị vận chuyển</th>
-    <th>Cập nhập trạng thái</th>
+    <th>Cập nhập vận chuyển</th>
     <th>Chi tiết</th>
   </tr>
 </thead>
@@ -58,10 +58,9 @@
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.dayRegister}}</td>
     <td>{{dataItem.phoneNumber}}</td>
-    <td>  <div  *ngIf="dataItem.statusContract === 'Done'">
+    <td>  <div  *ngIf="dataItem.statusSeller === 'Done'">
       <span class="text-primary"><strong>Đơn đã phê duyệt</strong></span>
     </div></td>
-
     <td>
     <div  *ngIf="dataItem.isTransport === true">
       <span class="text-primary"><strong>Tiểu thương</strong></span>
@@ -70,10 +69,10 @@
       <span class="text-primary2"><strong>Quận đoàn</strong></span>
     </div></td>
     <td >
-      <label><input type="checkbox" class="ios-switch" [checked]="dataItem.isTransport" (change)="updateIsTransportContract(dataItem.registerFormId,!dataItem.isTransport)" /><div><div></div></div></label>
+      <label><input type="checkbox" class="ios-switch" [checked]="dataItem.isTransport" (change)="updateIsTransportContract(dataItem.sellerId,!dataItem.isTransport)" /><div><div></div></div></label>
     </td>
 
-    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.registerFormId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.sellerId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
     </tr>
 </tbody>
 </table>

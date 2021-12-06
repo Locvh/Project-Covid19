@@ -209,6 +209,7 @@ a{
 
 .itemName {
   font-weight: bold;
+  width: 50px;
 }
 
 .itemPrice {
@@ -229,8 +230,8 @@ a{
 }
 .itemData1 {
   text-align: right;
-  margin-left: 30px;
-  width: 65px;
+  margin-left: 10px;
+  width: 95px;
 }
 .itemData2 {
   text-align: right;

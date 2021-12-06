@@ -1,0 +1,66 @@
+<div *ngIf="loading$ | async" class="loading-container flex-content-center ">
+  <mat-progress-spinner class="spinner"  color="primary" >
+
+  </mat-progress-spinner>
+  </div>
+
+
+  <section>
+    <header>
+      <nav class="rad-navigation">
+        <div class="rad-logo-container">
+          <div class="rad-logo">Cửa hàng ủy quyền</div>
+        </div>
+      </nav>
+    </header>
+  </section>
+
+  <app-header-admin></app-header-admin>
+<div class="row">
+  <div class="col-md-12">
+      <article class="banner-wrap">
+          <div class="search-box">
+              <div class="input-wrapper1">
+                <input type="text" name="username" id="username" class="form__input" placeholder="Tìm tên cửa hàng"  [(ngModel)]="storeFilter" autocomplete="off">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <button class="btn btn-outline-primary btn-edit" (click)="searchStore()"><span>Tìm kiếm</span></button>
+                <button class="btn btn-outline-danger btn-edit" (click)="onReset()"><span>Đặt lại</span> </button>
+              </div>
+          </div>
+      </article>
+  </div>
+</div>
+<div class="cover">
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+<thead>
+  <tr>
+    <th>STT</th>
+    <th>Tên cửa hàng</th>
+    <th>Số điện thoại</th>
+    <th>Địa chỉ</th>
+    <th>Mẫu Excel</th>
+
+  </tr>
+</thead>
+<tbody>
+  <tr  *ngFor="let  dataItem of stores | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td>{{dataItem.no}}</td>
+    <td>{{dataItem.shopName}}</td>
+    <td>{{dataItem.phoneSeller}}</td>
+     <td>{{dataItem.addressShop}}</td>
+     <td>  <button class="btn btn-outline-primary btn-edit" (click)="downloadExcel(dataItem.sellerId)">Mẫu excel</button></td>
+    </tr>
+</tbody>
+</table>
+
+  </div>
+</div>
+<div class="page">
+  <pagination-controls (pageChange)="pageNumber = $event" (click)="pageNevigation()"  align="center"></pagination-controls>
+  </div>
+  <button class="btn btn-outline-primary btn-edit2" (click)="downloadWord()">Hướng dẫn</button>
+  <input type="file" (change)="onChangeUploadExcel($event)" multiple="false"  />
+  <h3 class="text-danger notify">{{message}}</h3>
+</div>

@@ -1,10 +1,10 @@
 import { Component, OnInit ,OnDestroy} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 import { LoadingService } from 'src/app/service/loading.service';
 import { SharedService } from 'src/app/service/shared.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { getProduct } from 'src/app/model/product.model';
 declare var $:any;
 
 @Component({
@@ -18,8 +18,8 @@ export class SearchSellerComponent implements OnInit,OnDestroy {
 
   public sellersTop: any = [];
 
-  public productTop: any = [];
-  public productTopSales: any = [];
+  public productTop: getProduct[] = [];
+  public productTopSales: getProduct[] = [];
 
   sellerFilter: any;
 
@@ -46,14 +46,10 @@ export class SearchSellerComponent implements OnInit,OnDestroy {
 
   constructor(public loader: LoadingService,private service: SharedService,private cartService: CartService) { }
   ngOnInit(): void {
-
     this.SellerNearby();
     this.getTopProduct();
     this.getTopProductSale();
-
   }
-
-
 
   ngOnDestroy(){
       this.searchEvent.unsubscribe();
@@ -71,7 +67,6 @@ export class SearchSellerComponent implements OnInit,OnDestroy {
           });
           var retrievedObject3 = localStorage.getItem('testObject3');
           this.sellersTop=  JSON.parse(retrievedObject3);
-
         });
       }
       else {
@@ -82,10 +77,12 @@ export class SearchSellerComponent implements OnInit,OnDestroy {
 
 getTopProduct(){
   this.searchEvent = this.service.getTopProduct().subscribe(data => {
+
     localStorage.setItem('testObject', JSON.stringify(data));
     this.productTop = data;
     this.productTop.forEach((a:any)=>{
-      Object.assign(a,{quantity:1,total:a.unitPrice});
+      // ,total:a.unitPrice
+      Object.assign(a,{quantity:1});
       });
   });
 
@@ -99,7 +96,7 @@ getTopProductSale(){
     localStorage.setItem('testObject2', JSON.stringify(data));
     this.productTopSales = data;
     this.productTopSales.forEach((a:any)=>{
-      Object.assign(a,{quantity:1,total:a.unitPrice});
+      Object.assign(a,{quantity:1});
       });
   });
   var retrievedObject2 = localStorage.getItem('testObject2');

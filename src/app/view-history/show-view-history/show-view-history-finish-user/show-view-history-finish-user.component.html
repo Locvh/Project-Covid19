@@ -3,11 +3,6 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <!-- <button data-dismiss="modal" class="close" (click)="closeClick()">&times;</button>
-        <form>
-          <app-feedback [feedback]="feedback" *ngIf="ActivateEditPromotion">
-          </app-feedback>
-        </form> -->
         <div class="modal-header">
           <h2 class="modal-title" id="exampleModalLabel">Thông tin phản hồi</h2>
           <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
@@ -73,7 +68,9 @@
       <td>{{dataItem.no}}</td>
       <td>{{dataItem.orders.dayBuy}}</td>
       <td>{{dataItem.orders.totalPrice.toLocaleString()}}</td>
-      <td>  <div *ngIf="dataItem.orders.statusOrder === 'Done'">
+      <td>  <div *ngIf="dataItem.orders.statusOrder === 'Done'"  >
+        <span class="text-primary"><strong>Hoàn thành</strong></span>
+      </div> <div *ngIf="dataItem.orders.statusOrder === 'Finish'">
         <span class="text-primary"><strong>Hoàn thành</strong></span>
       </div></td>
       <td ><a class="name_info" data-target="#login2" data-toggle="modal" (click)="addClick2(dataItem.orders.orderId)" ><i class="fa fa-info-circle fa-2x" ></i></a ></td>

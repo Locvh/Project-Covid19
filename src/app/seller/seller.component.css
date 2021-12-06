@@ -68,7 +68,7 @@ a:hover {
 
 .rad-sidebar .title{
   font-size: 20px;
-  margin-top: 40px;
+  margin-top: 100px;
   font-weight: 600;
   text-transform: uppercase;
   line-height: 120%;
@@ -162,4 +162,28 @@ aside p {
   padding: 20px 0;
 }
 
+
+/* ---------------------------------------------------- */
+/* .background {
+  width: 100%;
+  vertical-align: top;
+  opacity: 0.2;
+  -webkit-filter: grayscale(100%) blur(10px);
+  filter: grayscale(100%) blur(10px);
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+} */
+ .rad-sidebar .profile {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  opacity: 1;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+}
 

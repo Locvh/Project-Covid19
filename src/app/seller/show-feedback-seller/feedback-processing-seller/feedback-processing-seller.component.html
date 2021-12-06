@@ -49,6 +49,7 @@
     <table class="table">
 <thead>
   <tr>
+    <th>STT</th>
     <th>Ngày tạo phiếu</th>
     <th>Số điện thoại</th>
     <th>Tình trạng đơn</th>
@@ -57,6 +58,7 @@
 </thead>
 <tbody>
   <tr  *ngFor="let dataItem of feedbacks | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td>{{dataItem.no}}</td>
     <td>{{dataItem.createDay}}</td>
     <td>{{dataItem.customer.customerPhone}}</td>
     <td><div *ngIf="dataItem.status === 'Processing'">

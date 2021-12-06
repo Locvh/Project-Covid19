@@ -27,7 +27,7 @@ export class ChoosePromotionComponent implements OnInit,OnDestroy{
 
   pageNumber: number = 1;
 
-  total: number ;
+  // total2: number ;
 
   productEvent :Subscription =new Subscription();
 
@@ -80,9 +80,8 @@ export class ChoosePromotionComponent implements OnInit,OnDestroy{
 
     getProductOfPromotion(){
       this.sellerId=localStorage.getItem("sellerId");
-      this.service.getProductOfPromotion(this.sellerId,this.promotionID,this.pageSize,this.pageNumber).subscribe(data => {
-        this.total=data.totalCount;
-        this.productOfPromotion = data.items;
+      this.service.getProductOfPromotion(this.sellerId,this.promotionID).subscribe(data => {
+        this.productOfPromotion = data;
       });
     }
 

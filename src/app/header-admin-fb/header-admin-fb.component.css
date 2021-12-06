@@ -203,9 +203,10 @@ a:hover {
 }
 .rad-sidebar .title{
   font-size: 20px;
-  margin-top: 40px;
+  margin-top: 100px;
   font-weight: 600;
   text-transform: uppercase;
+  line-height: 120%;
 }
 
 .rad-sidebar li {
@@ -305,71 +306,19 @@ a:hover {
 
 /* ----------------------------------------------------- */
 
-/*
-aside {
-  margin-top: 50px;
-  color: #fff;
-  width: 250px;
-  padding-left: 20px;
-  height: 93vh;
-  background-color: #e9edf000;
-}
-
-aside a {
-  font-size: 12px;
-  color: #fff;
-  display: block;
-  padding: 12px;
-  padding-left: 30px;
-  text-decoration: none;
-  -webkit-tap-highlight-color:transparent;
-}
-
-aside a:hover {
-  color: #3f5efb;
-  background: #fff;
-  outline: none;
-  position: relative;
-  background-color: #fff;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-
-aside a i {
-  margin-right: 5px;
-}
-
-aside a:hover::after {
-  content: "";
+.rad-sidebar .profile {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
   position: absolute;
-  background-color: transparent;
-  bottom: 100%;
-  right: 0;
-  height: 35px;
-  width: 35px;
-  border-bottom-right-radius: 18px;
-  box-shadow: 0 20px 0 0 #fff;
+  top: 2%;
+  left: 50%;
+  opacity: 1;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
 }
-
-aside a:hover::before {
-  content: "";
-  position: absolute;
-  background-color: transparent;
-  top: 38px;
-  right: 0;
-  height: 35px;
-  width: 35px;
-  border-top-right-radius: 18px;
-  box-shadow: 0 -20px 0 0 #fff;
-}
-
-aside p {
-  margin: 0;
-  padding: 40px 0;
-}
-
- */
-
 
 aside {
   margin-top: 50px;

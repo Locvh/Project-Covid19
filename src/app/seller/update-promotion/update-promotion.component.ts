@@ -1,6 +1,5 @@
 import { Component, OnInit,OnDestroy, Input } from '@angular/core';
 import { SharedService } from 'src/app/service/shared.service';
-import { InfoProduct } from '../class/info-product';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -78,7 +77,11 @@ export class UpdatePromotionComponent implements OnInit  ,OnDestroy {
     else if(this.form.value.promotionTitle!='' && this.form.value.percentPRO>0 && this.form.value.startPromotion!='' &&this.form.value.endPromotion!=''){
     this.productEvent=this.service.updatePromotion(val).subscribe(res => {
         this.message='Cập nhập khuyến mãi thành công';
-    });
+    },
+    (error) => {
+      this.message=error.error;
+    }
+    );
   }
 
   }

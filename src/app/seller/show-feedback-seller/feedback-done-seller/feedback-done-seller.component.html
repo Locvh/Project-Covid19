@@ -9,14 +9,6 @@
 <div id="login2" class="modal fade " data-keyboard="false" data-backdrop="static" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <!-- <div class="modal-body">
-        <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
-        <form>
-          <app-information-feedback-seller [feedbackId]="feedbackId" *ngIf="ActivateEditPromotion">
-          </app-information-feedback-seller>
-        </form>
-      </div> -->
-
       <div class="modal-header">
         <h2 class="modal-title" id="exampleModalLabel">Đơn phản hồi từ khách hàng</h2>
         <button data-dismiss="modal" class="close1" (click)="closeClick()">&times;</button>
@@ -34,7 +26,6 @@
 
 <div class="row">
   <div class="col-md-12">
-    <!-- <a class="logout" (click)="onBack()"><i class="fa fa-sign-out" aria-hidden="true"></i>Trở về trang chủ</a> -->
         <article class="banner-wrap">
           <div class="search-box">
             <div class="input-wrapper1">
@@ -52,6 +43,7 @@
     <table class="table">
 <thead>
   <tr>
+    <th>STT</th>
     <th>Ngày tạo phiếu</th>
     <th>Số điện thoại</th>
     <th>Tình trạng đơn</th>
@@ -60,12 +52,12 @@
 </thead>
 <tbody>
   <tr  *ngFor="let dataItem of feedbacks | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td>{{dataItem.no}}</td>
     <td>{{dataItem.createDay}}</td>
     <td>{{dataItem.customer.customerPhone}}</td>
     <td>  <div  *ngIf="dataItem.status === 'Done'">
       <span class="text-primary"><strong>Hoàn thành</strong></span>
     </div></td>
-<!-- [routerLink]="['/show-feedback-detail-seller', dataItem.feedbackId]"  -->
     <td class="items"><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.feedbackId)"><i class="fa fa-info-circle fa-2x" ></i></a ></td>
     </tr>
 </tbody>

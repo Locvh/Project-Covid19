@@ -458,7 +458,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .sticky-header.sticky {
   position: fixed;
   z-index: 9;
-  width: 100%;
+  width: 88.88%;
   top: 0;
   background: rgba(255, 255, 255, 0.9);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);

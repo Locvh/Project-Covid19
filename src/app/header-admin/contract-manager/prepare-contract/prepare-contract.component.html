@@ -56,11 +56,10 @@
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.dayRegister}}</td>
     <td>{{dataItem.phoneNumber}}</td>
-    <td>  <div  *ngIf="dataItem.statusContract === 'New'">
+    <td>  <div  *ngIf="dataItem.statusSeller === 'New'">
       <span class="text-primary"><strong>Đơn đăng kí mới</strong></span>
     </div></td>
-<!-- [routerLink]="['/information-contract-prepare', dataItem.registerFormId]" -->
-    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.registerFormId)"  ><i class="fa fa-info-circle fa-2x" ></i></a ></td>
+    <td ><a class="name_info"  data-target="#login2" data-toggle="modal"  (click)="addClick2(dataItem.sellerId)"  ><i class="fa fa-info-circle fa-2x" ></i></a ></td>
     </tr>
 </tbody>
 </table>
@@ -71,6 +70,3 @@
   <pagination-controls (pageChange)="pageNumber = $event" (click)="pageNevigation()"  align="center"></pagination-controls>
   </div>
 
-  <!-- <div class="btn-back">
-      <a class="m-l btn btn-light btn-outline-primary  button-edit " [routerLink]="['/header-admin']" > Quay về trang chủ</a >
-    </div> -->

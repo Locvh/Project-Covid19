@@ -52,6 +52,7 @@ export class FeedbackProcessingSellerComponent implements OnInit , OnDestroy {
     this.status = 'Processing';
     const sellerId=localStorage.getItem("sellerId");
     this.feedbackEvent = this.service.getFeedbackSeller(sellerId,this.status, this.feedbackFilter, this.pageSize, this.pageNumber).subscribe(data => {
+      console.log(data);
       this.total = data.totalCount;
       this.feedbacks = data.items;
     });

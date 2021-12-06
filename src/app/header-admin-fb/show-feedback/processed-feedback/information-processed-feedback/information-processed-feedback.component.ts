@@ -39,6 +39,7 @@ export class InformationProcessedFeedbackComponent implements OnInit , OnDestroy
 
   showFeedback(){
     this.feedbackIdEvent = this.service.getFeedbackID(this.feedbackId).subscribe(dataInfo => {
+
       this.Info = dataInfo;
      });
   }
@@ -55,7 +56,7 @@ export class InformationProcessedFeedbackComponent implements OnInit , OnDestroy
     });
     var update = {
       orderId: orderId,
-      statusOrder:'Done',
+      statusOrder:'Finish',
     };
     this.feedbackIdEvent=this.service.updateBillStatus(update).subscribe(res => {
     });

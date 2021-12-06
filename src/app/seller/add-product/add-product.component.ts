@@ -113,7 +113,11 @@ export class AddProductComponent implements OnInit, OnDestroy {
       this.productEvent = this.service.addProduct(val).subscribe((res) => {
         this.message='Đã thêm sản phẩm';
         this.resetForm();
-      });
+      },
+      (error) => {
+        this.message=error.error;
+      }
+      );
     }
   }
   ngOnDestroy() {

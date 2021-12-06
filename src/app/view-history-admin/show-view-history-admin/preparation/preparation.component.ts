@@ -16,6 +16,10 @@ export class PreparationComponent implements OnInit,OnDestroy {
 
   bills: any = [];
 
+  selected: any = [];
+
+  messages: any = [];
+
   billFilter: string ='';
 
   dateForm: string ='';
@@ -44,6 +48,32 @@ export class PreparationComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.nextPage();
   }
+
+  checked(item){
+    if(this.selected.indexOf(item) != -1){
+      return true;
+    }
+  }
+
+  onChange(checked, item){
+    if(checked){
+    this.selected.push(item);
+    } else {
+      this.selected.splice(this.selected.indexOf(item), 1)
+    }
+  }
+
+  save(){
+    this.messages.push(this.selected);
+    const updateObject = {
+      listOrderId: [...this.messages[0]],
+      statusOrder: 'Processing',
+    };
+    this.billEvent=this.service.updateBillStatusList(updateObject).subscribe(()=>{
+      this.nextPage();
+    });
+  }
+
 
   onReset(){
     this.billFilter='';

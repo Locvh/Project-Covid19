@@ -1,8 +1,8 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { SharedService } from 'src/app/service/shared.service';
-import { BillInfo } from '../class/bill-info';
-import { Bill } from '../class/bill';
+// import { BillInfo } from '../class/bill-info';
+// import { Bill } from '../class/bill';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import firebase from 'firebase';
@@ -33,11 +33,11 @@ export class InfomationComponent implements OnInit,OnDestroy {
 
 //-------------------------------------------------
 
-  bill = new Bill();
+  // bill = new Bill();
 
-  billInfo = new BillInfo();
+  // billInfo = new BillInfo();
 
-  billList:  BillInfo[]=[];
+  // billList:  BillInfo[]=[];
 
   billEvent:Subscription = new Subscription();
 

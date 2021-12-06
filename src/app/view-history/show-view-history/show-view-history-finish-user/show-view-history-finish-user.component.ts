@@ -75,9 +75,6 @@ export class ShowViewHistoryFinishUserComponent implements OnInit ,OnDestroy {
 
   pageNevigation(){
     this.searchName=this.searchName||'';
-    // var data = JSON.parse(localStorage.getItem('user_data'));
-    // this.userData = data.user.phoneNumber;
-    // this.userDataPhone=this.userData.replace('+84','0');
     this.userDataPhone= JSON.parse(localStorage.getItem('phoneCheck'));
     this.statusOder='Done';
     this.billEvent=this.service.searchBillPagesPhone(this.statusOder,this.userDataPhone,this.searchName,this.pageSize,this.pageNumber).subscribe(data => {

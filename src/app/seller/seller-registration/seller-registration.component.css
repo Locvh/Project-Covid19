@@ -1,48 +1,4 @@
-.input-wrapper1 {
-  display:inline-block;
-  position: relative;
-  width: 100%;
 
-}
-
-.input-wrapper1 .form__input{
-    background: none;
-    border: none;
-    border-bottom: solid 2px #474544;
-    color: #474544;
-    font-size: 1.2em;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin: 0em 0 1.875em 0;
-    padding: 0 0 0.2em 2.7em;
-    width: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-
-}
-
-.input-wrapper1 i {
-  color: #aaa;
-  position: absolute;
-  left: 1rem;
-  font-size: 18px;
-}
-
-.input-wrapper1 .form__input:focus{
-  border-bottom-color: #67daff;
-  border-radius: 4px;
-}
-.input-wrapper1 .form__input:focus + i {
-  color: #67daff;
-}
 
 /* ---------------------------------------------------- */
 
@@ -206,14 +162,13 @@ input[type="radio"] {
   position: absolute;
   top:0;
   left:0;
-  z-index: 0;
-
+  /* z-index: 0; */
 }
 
 
 input[type="radio"] + label span.radioButtonGraph {
   appearance: none;
-  z-index: 20;
+  /* z-index: 20; */
   position: absolute;
   top:-3px;
   left:0;
@@ -260,7 +215,6 @@ body {
   color: white;
   border-bottom: 1px solid #cdcdcd;
   background-image: linear-gradient(30deg , #0048bd, #44a7fd);
-  /* border-radius: 5px; */
   margin-bottom: 10px;
 }
 .top_section {
@@ -268,24 +222,11 @@ body {
   color: #000000;
 }
 
-.input input[type="text"]{
-  padding: 11px 11px;
-  border: 1px solid #FFF;
-  line-height: 18px;
-  color: #87aa32;
-  width: 83%;
-  margin: 0;
-  font-size:0.9em;
-  outline: none;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-}
 
 .sign_up
 {
   width:650px;
   margin: 4% auto 4% auto;
-  /* background: #FFF; */
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -297,8 +238,8 @@ body {
 /* --------------------------------------------- */
 .input-wrapper1 {
   display:inline-block;
-  position: relative
-
+  position: relative;
+  margin: 0em 0 1.8em 0;
 }
 
 .input-wrapper1 label{
@@ -340,7 +281,6 @@ h1 {
   color: #080808;
   font-size: 26px;
   font-weight: 500;
-  /* letter-spacing: 7px; */
   text-align: center;
   padding-top: 2%;
   padding-bottom: 2%;
@@ -351,3 +291,11 @@ h1 {
   font-size: 24px;
   color: #fff;
 }
+
+.edit1{
+  margin-left: 200px;
+}
+.edit2{
+  margin-left: 100px;
+}
+

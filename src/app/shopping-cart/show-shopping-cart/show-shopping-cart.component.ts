@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
 import { SharedService } from 'src/app/service/shared.service';
-import { BillInfo } from '../class/bill-info';
-import { Bill } from '../class/bill';
+// import { BillInfo } from '../class/bill-info';
+import { Bill } from 'src/app/model/bill';
 import { Subscription } from 'rxjs';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -19,8 +19,6 @@ export class ShowShoppingCartComponent implements OnInit ,OnDestroy{
 
 
   bill = new Bill();
-
-  billInfo = new BillInfo();
 
   form: FormGroup;
 

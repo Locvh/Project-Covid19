@@ -57,6 +57,12 @@
     <table class="table">
 <thead>
   <tr>
+    <th *ngIf="isTransport == 'True'">
+      <a class="icon-yes2"
+      (click)="save()" data-target="#login3" data-toggle="modal">
+      <i class="fa fa-check-square-o" aria-hidden="true"></i>
+      </a>
+    </th>
     <th>STT</th>
     <th>Ngày mua</th>
     <th>Tổng số tiền(VND)</th>
@@ -67,6 +73,9 @@
 </thead>
 <tbody>
   <tr  *ngFor="let dataItem of bills | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,  totalItems: total }">
+    <td *ngIf="isTransport == 'True'"><input type="checkbox" class="cb-order"
+      (change)="onChange($event.target.checked, dataItem.order.orderId)"  [checked]="checked(dataItem.order.orderId)">
+    </td>
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.order.dayBuy}}</td>
     <td>{{dataItem.order.totalPrice.toLocaleString()}}</td>

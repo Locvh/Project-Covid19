@@ -3,4 +3,5 @@ export class BillInfo {
   priceProduct !: number;
   quantity !: number;
   subTotal !: number;
+  originalPrice!: number;
 }

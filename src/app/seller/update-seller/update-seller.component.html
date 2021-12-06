@@ -3,26 +3,7 @@
 
   </mat-progress-spinner>
 </div>
-<!-- <header class="header_area header_three">
-  <div class="header_middel">
-    <div class="container-fluid">
-        <div class="middel_inner">
-            <div class="row align-items-center">
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <div class="logo">
-                    <img src="assets/img/logo.png" alt="">
-                </div>
-              </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                  <h3 class="d-flex justify-content-center heading">Chỉnh sửa thông tin cửa hàng</h3>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  </header> -->
+
   <section>
     <header>
       <nav class="rad-navigation">
@@ -77,15 +58,6 @@
 
                 <div class="row">
                   <div class="input-wrapper1">
-                  <label>Email</label>
-                  <input type="text" name="username" id="username" class="form__input" placeholder="Email" formControlName="email" >
-                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                </div>
-                  <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
-                </div>
-
-                <div class="row">
-                  <div class="input-wrapper1">
                   <label>Địa chỉ cửa hàng</label>
                   <input formControlName="addressShop"  (keyup)="autocomplete()" matInput type="text" [matAutocomplete]="auto" name="username" id="username" class="form__input" placeholder="Địa chỉ cửa hàng"  >
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -97,7 +69,7 @@
                 </div>
                   <!-- <div class="text-danger" *ngIf="formControls.distanceFee.errors?.required">Chưa điền chi phí vận chuyển</div><br /> -->
                 </div>
-
+                <br>
                 <h3 class="text-danger">{{message}}</h3>
                 <button type="submit" class="button type1" >Xác nhận thông tin</button>
               </form>

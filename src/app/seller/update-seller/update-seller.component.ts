@@ -105,7 +105,7 @@ export class UpdateSellerComponent implements OnInit ,OnDestroy {
         var val =  {
           sellerId:this.sellerId,
           shopName: this.form.value.shopName,
-          email: this.form.value.email,
+          // email: this.form.value.email,
           phoneSeller:this.form.value.phoneSeller,
           addressShop:this.form.value.addressShop,
           imageSeller:this.imgInFirebase,
@@ -114,7 +114,11 @@ export class UpdateSellerComponent implements OnInit ,OnDestroy {
        if(a1.substr(a1.length - 19)=='Quận 1, Hồ Chí Minh'){
     this.sellerEvent=this.service.updateSeller(val).subscribe(res => {
       this.message="Đã cập nhập thông tin tiểu thương thành công";
-    });
+    },
+    (error) => {
+      this.message=error.error;
+    }
+    );
   }else{
     this.message='Bạn nên cập nhập lại tiểu thương ở quận 1';
   }

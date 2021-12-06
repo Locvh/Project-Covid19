@@ -61,7 +61,12 @@ export class AddPromotionComponent implements OnInit,OnDestroy {
       this.promotionEvent=this.service.addPromotion(val).subscribe(res => {
         this.message='Thêm khuyến mãi thành công';
         this.resetForm();
-    });}
+    },
+    (error) => {
+      this.message=error.error;
+    }
+
+    );}
 
   }
 

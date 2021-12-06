@@ -21,7 +21,7 @@ export class ShowPromotionComponent implements OnInit,OnDestroy{
 
   isSubmitted : boolean=false;
 
-  pageSize: number = 10;
+  pageSize: number = 8;
 
   pageNumber: number = 1;
 
@@ -43,23 +43,22 @@ export class ShowPromotionComponent implements OnInit,OnDestroy{
 
 
   ngOnInit(): void {
-    this.nextPage();
+    this.pageNevigation();
   }
 
 
     pageNevigation(){
       this.sellerId=localStorage.getItem("sellerId");
       this.productEvent=this.service.getPromotionPage(this.sellerId,this.pageSize,this.pageNumber).subscribe(data => {
+        this.total=data.totalCount;
         this.promotions = data.items;
         });
     }
 
-    nextPage(){
-      this.router.navigate(['/show-promotion'], { queryParams: { pageNumber: this.pageNumber} });
-      this.pageNevigation();
-      // this.router.navigate(['/show-promotion'], { queryParams: { pageNumber: this.pageNumber} });
-      // this.pageNevigation();
-    }
+    // nextPage(){
+    //   this.router.navigate(['/show-promotion'], { queryParams: { pageNumber: this.pageNumber} });
+    //   this.pageNevigation();
+    // }
 
     ngOnDestroy(){
       this.productEvent.unsubscribe();
