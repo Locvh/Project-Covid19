@@ -18,6 +18,8 @@ export class FinishComponent implements OnInit ,OnDestroy {
 
   billFilter: string ='';
 
+  maxDate =new Date();
+
   total: number ;
 
   dateForm: string ='';

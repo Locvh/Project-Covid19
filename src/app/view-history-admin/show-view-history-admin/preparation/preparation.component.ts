@@ -38,6 +38,8 @@ export class PreparationComponent implements OnInit,OnDestroy {
 
   orderId: any;
 
+  maxDate =new Date();
+
   ActivateEditPromotion: boolean = false;
 
   loading$ = this.loader.loading$;

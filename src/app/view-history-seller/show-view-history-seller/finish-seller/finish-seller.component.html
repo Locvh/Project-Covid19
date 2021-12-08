@@ -50,7 +50,7 @@
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.order.dayBuy}}</td>
     <td>{{dataItem.order.totalPrice.toLocaleString()}}</td>
-    <td>  <div *ngIf="dataItem.order.statusOrder === 'Done'">
+    <td>  <div *ngIf="dataItem.order.statusOrder === 'Done'|| dataItem.order.statusOrder === 'Finish'">
       <span class="text-primary"><strong>Hoàn thành</strong></span>
     </div></td>
 

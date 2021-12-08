@@ -40,8 +40,8 @@
     <th>Tên cửa hàng</th>
     <th>Số điện thoại</th>
     <th>Địa chỉ</th>
-    <th>Mẫu Excel</th>
-
+    <th>Mẫu thêm sản phẩm</th>
+    <th>Mẫu cập nhập sản phẩm</th>
   </tr>
 </thead>
 <tbody>
@@ -49,9 +49,11 @@
     <td>{{dataItem.no}}</td>
     <td>{{dataItem.shopName}}</td>
     <td>{{dataItem.phoneSeller}}</td>
-     <td>{{dataItem.addressShop}}</td>
-     <td>  <button class="btn btn-outline-primary btn-edit" (click)="downloadExcel(dataItem.sellerId)">Mẫu excel</button></td>
-    </tr>
+    <td>{{dataItem.addressShop}}</td>
+    <td><a class="name_info" (click)="downloadExcel(dataItem.sellerId)"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a></td>
+    <td><a class="name_info" (click)="saveFileProduct(dataItem.sellerId)"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a></td>
+
+  </tr>
 </tbody>
 </table>
 
@@ -60,7 +62,27 @@
 <div class="page">
   <pagination-controls (pageChange)="pageNumber = $event" (click)="pageNevigation()"  align="center"></pagination-controls>
   </div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6 ">
+  <div class="page">
+  <div class="title">Thêm sản phẩm</div>
   <button class="btn btn-outline-primary btn-edit2" (click)="downloadWord()">Hướng dẫn</button>
   <input type="file" (change)="onChangeUploadExcel($event)" multiple="false"  />
   <h3 class="text-danger notify">{{message}}</h3>
+  </div>
+</div>
+
+
+<div class="col-lg-6 col-md-6 col-sm-6 ">
+  <div class="page">
+  <div  class="title">Cập nhập sản phẩm</div>
+  <button class="btn btn-outline-primary btn-edit2" (click)="downloadWordEdit()">Hướng dẫn</button>
+  <input type="file" (change)="onChangeUploadExcel($event)" multiple="false"  />
+  <h3 class="text-danger notify">{{message}}</h3>
+</div>
+</div>
+</div>
+
+
 </div>

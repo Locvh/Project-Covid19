@@ -76,6 +76,13 @@ export class AuthorizedStoreComponent implements OnInit , OnDestroy{
   link.href = "assets/Guide.docx";
   link.click();
 }
+  downloadWordEdit(){
+  let link = document.createElement("a");
+  link.download = "Hướng dẫn";
+  link.href = "assets/Guild-edit.docx";
+  link.click();
+}
+
 onChangeUploadExcel(event: any) {
   var file = event.target.files[0];
   const formData: FormData = new FormData();
@@ -87,5 +94,17 @@ onChangeUploadExcel(event: any) {
 
 }
 
+saveFileProduct(item:any){
+  this.service.saveFileProduct(item).subscribe(data=>{
+    const link = document.createElement('a');
+    const blob = new Blob([data], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    saveAs(blob,'Product_'+item);
+});
+
+}
 
 }

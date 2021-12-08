@@ -32,6 +32,7 @@ export class AddProductComponent implements OnInit, OnDestroy {
   message: string;
 
   // ---------------------------------
+
   imgSrc: string = 'https://firebasestorage.googleapis.com/v0/b/marketcovid.appspot.com/o/upload?alt=media&token=24c07f47-c900-43a6-93e7-e0319f923680';
 
   selectImage: any;

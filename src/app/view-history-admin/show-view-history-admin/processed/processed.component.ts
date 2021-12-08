@@ -18,6 +18,8 @@ export class ProcessedComponent implements OnInit,OnDestroy {
 
   selected: any = [];
 
+  maxDate =new Date();
+
   messages: any = [];
 
   billFilter: string ='';

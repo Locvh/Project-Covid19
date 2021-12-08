@@ -300,4 +300,18 @@ searchSellerauthorityPages(shopName:string,pageSize: number, pageNumber:number) 
 addProductByExcel(val:any){
   return this.http.post<any>(this.APIUrlNew +'excel/readProductByAdmin',val);
 }
+
+saveFileProduct(sellerId:string) {
+  let params = new HttpParams().set("sellerId",sellerId);
+  let HTTPOptions:Object = {
+    responseType: 'blob',
+    params: params
+ }
+  return this.http.get<any>(this.APIUrlNew + "excel/ExportProductById",HTTPOptions);
+}
+
+
+
+
+
 }

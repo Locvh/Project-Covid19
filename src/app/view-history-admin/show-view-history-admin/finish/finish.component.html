@@ -25,13 +25,13 @@
         <div class="col-lg-6 col-md-6 col-sm-6 " >
           <div class="search-box">
             <div class="input-wrapper1">
-                <input matInput [matDatepicker]="pickerFrom" name="username" id="username" class="form__input1" [(ngModel)]="dateForm" placeholder="Từ ngày" disabled>
+                <input matInput [matDatepicker]="pickerFrom" [max]="maxDate" name="username" id="username" class="form__input1" [(ngModel)]="dateForm" placeholder="Từ ngày" disabled>
                 <mat-datepicker-toggle matSuffix [for]="pickerFrom" ></mat-datepicker-toggle>
                 <mat-datepicker #pickerFrom disabled="false" ></mat-datepicker>
             </div>
 
             <div class="input-wrapper1">
-              <input matInput [matDatepicker]="pickerTo" name="username" id="username" class="form__input1" [(ngModel)]="dateTo" placeholder="Từ ngày" disabled>
+              <input matInput [matDatepicker]="pickerTo" [max]="maxDate" name="username" id="username" class="form__input1" [(ngModel)]="dateTo" placeholder="Từ ngày" disabled>
               <mat-datepicker-toggle matSuffix [for]="pickerTo" ></mat-datepicker-toggle>
               <mat-datepicker #pickerTo disabled="false" ></mat-datepicker>
           </div>
@@ -73,7 +73,7 @@
       <td>{{dataItem.no}}</td>
       <td>{{dataItem.order.dayBuy}}</td>
       <td>{{dataItem.order.totalPrice.toLocaleString()}}</td>
-      <td>  <div *ngIf="dataItem.order.statusOrder === 'Done'">
+      <td>  <div *ngIf="dataItem.order.statusOrder === 'Done' || dataItem.order.statusOrder === 'Finish'">
         <span class="text-primary"><strong>Hoàn thành</strong></span>
       </div></td>
 

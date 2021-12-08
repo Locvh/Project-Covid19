@@ -338,3 +338,16 @@
 .notify{
   margin-left: 160px;
 }
+
+.name_info{
+  margin-left: 20px;
+  font-size: 20px;
+  color: #43e97b;
+}
+.name_info:hover{
+  color: #000;
+}
+.title{
+  margin: 5px 5px 5px 30px;
+  color: red;
+}

@@ -119,14 +119,26 @@
           <div class="input-wrapper1">
           <label>Thể loại mặt hàng</label>
             <select formControlName="tradeGenre" class="form__input" >
-              <option value="" disabled >Chọn thể loại</option>
+              <!-- <option value="" disabled >Chọn thể loại</option>
               <option value="Thực phẩm ăn liền">Thực phẩm ăn liền</option>
               <option value="Mỹ phẩm">Mỹ phẩm</option>
               <option value="Rau củ quả">Rau củ quả</option>
               <option value="Thịt,cá">Thịt,cá</option>
               <option value="Gạo,bột">Gạo,bột</option>
               <option value="Tạp hóa">Tạp hóa</option>
-              <option value="May mặc">May mặc</option>
+              <option value="May mặc">May mặc</option> -->
+
+              <option value="" disabled >Chọn thể loại</option>
+              <option value="Thịt, cá, hải sản">Thịt, cá, hải sản</option>
+              <option value="Vật dụng gia đình">Vật dụng gia đình</option>
+              <option value="Đồ uống">Đồ uống</option>
+              <option value="Gia vị">Gia vị</option>
+              <option value="Vệ sinh nhà cửa">Vệ sinh nhà cửa</option>
+              <option value="Chăm sóc cá nhân">Chăm sóc cá nhân</option>
+              <option value="Bánh kẹo">Bánh kẹo</option>
+              <option value="Sữa">Sữa</option>
+              <option value="Gạo, bột, đồ khô">Gạo, bột, đồ khô</option>
+              <option value="Rau, củ, trái cây">Rau, củ, trái cây</option>
             </select>
           <i class="fa fa-arrow-right" aria-hidden="true"></i>
           <div class="text-danger" *ngIf="isSubmitted && formControls.tradeGenre.errors?.required">Chưa chọn thể loại mặt hàng</div>
